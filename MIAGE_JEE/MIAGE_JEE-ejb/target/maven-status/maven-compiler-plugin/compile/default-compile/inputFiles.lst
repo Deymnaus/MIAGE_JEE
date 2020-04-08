@@ -1,0 +1,14 @@
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/metier/MetierCompetence.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/facades/AbstractFacade.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/exposition/ExpoLegLocal.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/facades/CompetenceFacade.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/facades/CollaborateurFacadeLocal.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/entities/Collaborateur.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/entities/Competence.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/exposition/ExpoLeg.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/exposition/ExpoLrd.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/metier/MetierCollaborateur.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/metier/MetierCollaborateurLocal.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/metier/MetierCompetenceLocal.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/facades/CompetenceFacadeLocal.java
+/Users/andreachristophe/NetBeansProjects/MIAGE_JEE_GLOBAL/MIAGE_JEE/MIAGE_JEE-ejb/src/main/java/fr/miage/facades/CollaborateurFacade.java
