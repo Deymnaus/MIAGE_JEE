@@ -3,6 +3,7 @@ package fr.miage.facades;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
+import fr.miage.entities.Statut;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,10 +25,11 @@ public class CandidatureFacade extends AbstractFacade<Candidature> implements Ca
     }
 
     @Override
-    public void creerCandidature(Candidat candidat, FichePoste fichePoste) {
+    public void creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut) {
         Candidature c = new Candidature();
         c.setCandidat(candidat);
         c.setFichePoste(fichePoste);
+        c.setStatut(statut);
         this.create(c);
     }
 }

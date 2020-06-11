@@ -12,6 +12,7 @@ import fr.miage.exception.EquipeInexistanteException;
 
 import javax.ejb.Local;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -24,4 +25,6 @@ public interface GestionDemandeCompetenceLocal {
     public Competence getCompetence(long idCompetence);
 
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listeIdCompetence) throws EquipeInexistanteException, CompetenceInexistanteException;
+
+    HashSet<DemandeCompetence> listerCompetenceACombler();
 }

@@ -3,6 +3,7 @@ package fr.miage.facades;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
+import fr.miage.entities.Etat;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -24,6 +25,6 @@ public interface DemandeCompetenceFacadeLocal {
 
     int count();
 
-    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe);
+    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe, Etat etat);
 
 }

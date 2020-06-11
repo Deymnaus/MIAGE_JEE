@@ -11,6 +11,8 @@ public class Candidature implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Statut statut;
+
     @JoinColumn(name = "CANDIDAT_ID", referencedColumnName = "ID")
     @ManyToOne
     private Candidat candidat;
@@ -22,9 +24,10 @@ public class Candidature implements Serializable {
     public Candidature() {
     }
 
-    public Candidature(Candidat candidat, FichePoste fichePoste) {
+    public Candidature(Candidat candidat, FichePoste fichePoste, Statut statut) {
         this.candidat = candidat;
         this.fichePoste = fichePoste;
+        this.statut = statut;
     }
 
     public Long getId() {
@@ -49,5 +52,13 @@ public class Candidature implements Serializable {
 
     public void setFichePoste(FichePoste fichePoste) {
         this.fichePoste = fichePoste;
+    }
+
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
     }
 }

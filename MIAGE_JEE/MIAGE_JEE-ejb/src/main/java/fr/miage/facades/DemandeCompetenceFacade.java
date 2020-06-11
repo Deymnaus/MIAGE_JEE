@@ -3,6 +3,7 @@ package fr.miage.facades;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
+import fr.miage.entities.Etat;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,10 +26,11 @@ public class DemandeCompetenceFacade extends AbstractFacade<DemandeCompetence> i
     }
 
     @Override
-    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe) {
+    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe, Etat etat) {
         DemandeCompetence dc = new DemandeCompetence();
         dc.setListeCompetence(listeCompetence);
         dc.setEquipe(equipe);
+        dc.setEtat(etat);
         this.create(dc);
         return dc;
     }

@@ -24,8 +24,10 @@ public interface ExpoLegLocal {
     HashSet<Competence> listerCompetence(Long numEquipe);
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listCompetences);
 
-    // Codir
+    HashSet<DemandeCompetence> listerCompetenceACombler();
 
+    // Codir
+    
     // Candidat
 
     // CEO

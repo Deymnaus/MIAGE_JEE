@@ -1,6 +1,7 @@
 package fr.miage.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class Equipe implements Serializable {
         this.nom = nom;
     }
 
+    @XmlTransient
     public List<Collaborateur> getListeCollab() {
         return listeCollab;
     }

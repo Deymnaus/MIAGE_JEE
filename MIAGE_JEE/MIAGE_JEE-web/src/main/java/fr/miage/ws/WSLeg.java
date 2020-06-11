@@ -10,6 +10,7 @@ import fr.miage.entities.DemandeCompetence;
 import fr.miage.exposition.ExpoLegLocal;
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,13 +26,20 @@ public class WSLeg {
     private ExpoLegLocal ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Web Service > Add Operation"
 
+    // Manager
     @WebMethod(operationName = "listerCompetence")
-    public HashSet<Competence> listerCompetence(Long numEquipe) {
+    public HashSet<Competence> listerCompetence(@WebParam(name = "numEquip") Long numEquipe) {
         return ejbRef.listerCompetence(numEquipe);
     }
 
     @WebMethod(operationName = "demanderCompetence")
-    public DemandeCompetence demandeCompetence(Long numEquip, ArrayList<Long> listCompetences){
+    public DemandeCompetence demandeCompetence(@WebParam(name = "numEquip") Long numEquip, @WebParam(name = "idCompetences") ArrayList<Long> listCompetences){
         return ejbRef.demanderCompetence(numEquip, listCompetences);
+    }
+
+    //Codir
+    @WebMethod(operationName = "listerCompetenceACombler")
+    public HashSet<DemandeCompetence> listerCompetenceACombler() {
+        return ejbRef.listerCompetenceACombler();
     }
 }

@@ -80,6 +80,11 @@ public class ExpoLeg implements ExpoLegLocal {
 
     // Codir
 
+    @Override
+    public HashSet<DemandeCompetence> listerCompetenceACombler() {
+        return gestionDemandeCompetence.listerCompetenceACombler();
+    }
+
     // Candidat
 
     // CEO

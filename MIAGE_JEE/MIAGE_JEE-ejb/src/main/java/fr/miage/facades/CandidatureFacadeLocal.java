@@ -3,6 +3,7 @@ package fr.miage.facades;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
+import fr.miage.entities.Statut;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -24,6 +25,6 @@ public interface CandidatureFacadeLocal {
 
     int count();
 
-    public void creerCandidature(Candidat candidat, FichePoste fichePoste);
+    public void creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut);
 
 }

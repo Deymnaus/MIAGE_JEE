@@ -8,6 +8,7 @@ package fr.miage.metier;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
+import fr.miage.entities.Etat;
 import fr.miage.exception.CompetenceInexistanteException;
 import fr.miage.exception.EquipeInexistanteException;
 import fr.miage.facades.*;
@@ -22,7 +23,7 @@ import java.util.HashSet;
  * @author ddias
  */
 @Stateless
-public class GestionDemandeDemandeCompetence implements GestionDemandeCompetenceLocal {
+public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
 
     @EJB
     private DemandeCompetenceFacadeLocal demandeCompetenceFacade;
@@ -68,7 +69,19 @@ public class GestionDemandeDemandeCompetence implements GestionDemandeCompetence
             listeCompetences.add(c);
         }
 
-        return demandeCompetenceFacade.creerDemandeCompetence(new ArrayList<Competence>(listeCompetences), eq);
+        return demandeCompetenceFacade.creerDemandeCompetence(new ArrayList<Competence>(listeCompetences), eq, Etat.EnAttente);
+    }
+
+    @Override
+    public HashSet<DemandeCompetence> listerCompetenceACombler() {
+        HashSet<DemandeCompetence> listeCompetenceACombler = new HashSet<>();
+
+        for (DemandeCompetence d : demandeCompetenceFacade.findAll()){
+            if(d.getEtat() == Etat.EnAttente)
+                listeCompetenceACombler.add(d);
+        }
+
+        return listeCompetenceACombler;
     }
 
     // Add business logic below. (Right-click in editor and choose

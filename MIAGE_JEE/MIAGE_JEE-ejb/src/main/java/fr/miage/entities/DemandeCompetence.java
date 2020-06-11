@@ -13,6 +13,8 @@ public class DemandeCompetence implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Etat etat;
+
     @ManyToMany
     private List<Competence> listeCompetence;
 
@@ -25,9 +27,10 @@ public class DemandeCompetence implements Serializable {
     public DemandeCompetence() {
     }
 
-    public DemandeCompetence(List<Competence> listeCompetence, Equipe equipe) {
+    public DemandeCompetence(List<Competence> listeCompetence, Equipe equipe, Etat etat) {
         this.listeCompetence = listeCompetence;
         this.equipe = equipe;
+        this.etat = etat;
     }
 
     public Long getId() {
@@ -52,5 +55,21 @@ public class DemandeCompetence implements Serializable {
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
+    public List<FichePoste> getListeFichePoste() {
+        return listeFichePoste;
+    }
+
+    public void setListeFichePoste(List<FichePoste> listeFichePoste) {
+        this.listeFichePoste = listeFichePoste;
     }
 }

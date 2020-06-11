@@ -1,6 +1,7 @@
 package fr.miage.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 @Entity
@@ -41,6 +42,7 @@ public class Collaborateur extends Candidat implements Serializable {
     public void setManager(boolean manager) {
         this.manager = manager;
     }
+
 
     public Equipe getEquipe() {
         return equipe;
