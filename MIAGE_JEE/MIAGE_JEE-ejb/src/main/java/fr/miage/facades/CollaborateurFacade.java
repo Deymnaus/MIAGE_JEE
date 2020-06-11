@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.miage.facades;
 
 import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
-import java.util.ArrayList;
+import fr.miage.entities.Equipe;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 
-/**
- *
- * @author ddias
- */
 @Stateless
 public class CollaborateurFacade extends AbstractFacade<Collaborateur> implements CollaborateurFacadeLocal {
 
@@ -32,13 +25,19 @@ public class CollaborateurFacade extends AbstractFacade<Collaborateur> implement
     }
 
     @Override
-    public void creerCollaborateur(String nom, String prenom, String status) {
+    public void creerCollaborateur(String nom, String prenom, boolean codir, boolean manager, Equipe equipe) {
         Collaborateur clb = new Collaborateur();
         clb.setNom(nom);
         clb.setPrenom(prenom);
-        clb.setStatus(status);
-        clb.setCompetences(new ArrayList<Competence>());
+        clb.setListeCompetences(new ArrayList<Competence>());
+        clb.setCodir(codir);
+        clb.setManager(manager);
+        clb.setEquipe(equipe);
         this.create(clb);
     }
-    
+
+    @Override
+    public ArrayList<Competence> listerCompetence(Collaborateur collaborateur) {
+        return new ArrayList<>(collaborateur.getListeCompetences());
+    }
 }

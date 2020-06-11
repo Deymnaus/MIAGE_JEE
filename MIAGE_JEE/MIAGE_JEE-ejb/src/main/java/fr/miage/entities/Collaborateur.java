@@ -1,114 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.miage.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
-/**
- *
- * @author ddias
- */
 @Entity
-public class Collaborateur implements Serializable {
+public class Collaborateur extends Candidat implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private String nom;
-    
-    private String prenom;
-    
-    @OneToMany
-    private Collection<Competence> competences;
-    
-    private String status;
+
+    private boolean codir;
+
+    private boolean manager;
+
+    @JoinColumn(name = "EQUIPE_ID", referencedColumnName = "ID")
+    @ManyToOne
+    private Equipe equipe;
 
     public Collaborateur() {
+
     }
 
-    public Collaborateur(Long id, String nom, String prenom, Collection<Competence> competences, String status) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.competences = competences;
-        this.status = status;
+    public Collaborateur(boolean codir, boolean manager, Equipe equipe){
+        this.codir = codir;
+        this.manager = manager;
+        this.equipe = equipe;
     }
 
-    public String getNom() {
-        return nom;
+    public boolean isCodir() {
+        return codir;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setCodir(boolean codir) {
+        this.codir = codir;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public boolean isManager() {
+        return manager;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setManager(boolean manager) {
+        this.manager = manager;
     }
 
-    public Collection<Competence> getCompetences() {
-        return competences;
+    public Equipe getEquipe() {
+        return equipe;
     }
 
-    public void setCompetences(Collection<Competence> competences) {
-        this.competences = competences;
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Collaborateur setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Collaborateur)) {
-            return false;
-        }
-        Collaborateur other = (Collaborateur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "fr.miage.entities.Collaborateur[ id=" + id + " ]";
-    }
-    
 }
