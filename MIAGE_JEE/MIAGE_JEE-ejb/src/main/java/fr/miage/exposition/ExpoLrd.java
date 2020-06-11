@@ -6,11 +6,11 @@
 package fr.miage.exposition;
 
 import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CollaborateurExport;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatExport;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
-import fr.miage.entities.Collaborateur;
+import fr.miage.entities.Candidat;
 import fr.miage.entities.Competence;
-import fr.miage.metier.MetierCollaborateurLocal;
+import fr.miage.metier.MetierCandidatLocal;
 import fr.miage.metier.MetierCompetenceLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,22 +24,22 @@ import java.util.*;
 public class ExpoLrd implements ExpoLrdRemote {
 
     @EJB
-    private MetierCollaborateurLocal metierCollaborateur;
+    private MetierCandidatLocal metierCandidat;
 
     @EJB
     private MetierCompetenceLocal metierCompetence;
 
-    public void creerCollaborateur(String nom, String prenom, String status) {
-        this.metierCollaborateur.creerCollaborateur(nom, prenom, status);
+    public void creerCandidat(String nom, String prenom) {
+        this.metierCandidat.creerCandidat(nom, prenom);
     }
 
-    public CollaborateurExport getCollaborateur(long idCollaborateur) {
+    public CandidatExport getCandidat(long idCandidat) {
         
-        Collaborateur collaborateur = this.metierCollaborateur.getCollaborateur(idCollaborateur);
+        Candidat candidat = this.metierCandidat.getCandidat(idCandidat);
         
         List<CompetenceExport> competences = new ArrayList<CompetenceExport>();
         
-        for (Competence competence: collaborateur.getCompetences()) {
+        for (Competence competence: candidat.getListeCompetences()) {
             
             CompetenceExport c = new CompetenceExport();
             c.setId(competence.getId());
@@ -49,11 +49,10 @@ public class ExpoLrd implements ExpoLrdRemote {
             competences.add(c);     
         }
         
-        CollaborateurExport c = new CollaborateurExport();
-        c.setId(collaborateur.getId());
-        c.setStatus(collaborateur.getStatus());
-        c.setNom(collaborateur.getNom());
-        c.setPrenom(collaborateur.getPrenom());
+        CandidatExport c = new CandidatExport();
+        c.setId(candidat.getId());
+        c.setNom(candidat.getNom());
+        c.setPrenom(candidat.getPrenom());
         c.setCompetences(competences);
         
         return c;

@@ -5,9 +5,13 @@
  */
 package fr.miage.exposition;
 
-import fr.miage.entities.Collaborateur;
+import fr.miage.entities.Candidat;
 import fr.miage.entities.Competence;
+import fr.miage.entities.DemandeCompetence;
+
 import javax.ejb.Local;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -15,10 +19,15 @@ import javax.ejb.Local;
  */
 @Local
 public interface ExpoLegLocal {
-    
-    public void creerCollaborateur(String nom, String prenom, String status);
-    public Collaborateur getCollaborateur(long idCollaborateur);
-    public void creerCompetence(String nom, String competence);
-    public Competence getCompetence(long idCompetence);
-    
+
+    // Manager
+    HashSet<Competence> listerCompetence(Long numEquipe);
+    DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Integer> listeIdCompetence);
+
+    // Codir
+
+    // Candidat
+
+    // CEO
+
 }

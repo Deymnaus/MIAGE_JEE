@@ -5,7 +5,7 @@
  */
 package fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote;
 
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CollaborateurExport;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatExport;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
 import javax.ejb.Remote;
 
@@ -16,8 +16,8 @@ import javax.ejb.Remote;
 @Remote
 public interface ExpoLrdRemote {
     
-    public void creerCollaborateur(String nom, String prenom, String status);
-    public CollaborateurExport getCollaborateur(long idCollaborateur);
+    public void creerCandidat(String nom, String prenom);
+    public CandidatExport getCandidat(long idCandidat);
     public void creerCompetence(String nom, String competence);
     public CompetenceExport getCompetence(long idCompetence);
 }

@@ -5,12 +5,18 @@
  */
 package fr.miage.exposition;
 
-import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
+import fr.miage.entities.DemandeCompetence;
+import fr.miage.entities.Equipe;
+import fr.miage.metier.MetierCandidatLocal;
 import fr.miage.metier.MetierCollaborateurLocal;
 import fr.miage.metier.MetierCompetenceLocal;
+import fr.miage.metier.GestionEquipeLocal;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -20,28 +26,45 @@ import javax.ejb.Stateless;
 public class ExpoLeg implements ExpoLegLocal {
 
     @EJB
-    private MetierCollaborateurLocal metierCollaborateur;
+    private MetierCandidatLocal metierCandidat;
 
     @EJB
     private MetierCompetenceLocal metierCompetence;
 
+    @EJB
+    private MetierCollaborateurLocal metierCollaborateur;
+
+    @EJB
+    private GestionEquipeLocal gestionEquipe;
+
+
+    // Manager
+
+    /**
+     *
+     * @param numEquipe
+     * @return
+     */
     @Override
-    public void creerCollaborateur(String nom, String prenom, String status) {
-        this.metierCollaborateur.creerCollaborateur(nom, prenom, status);
+    public HashSet<Competence> listerCompetence(Long numEquipe) {
+        return gestionEquipe.listerCompetence(numEquipe);
     }
 
+    /**
+     *
+     * @param numEquipe
+     * @param listeIdCompetence
+     * @return
+     */
     @Override
-    public Collaborateur getCollaborateur(long idCollaborateur) {
-        return this.metierCollaborateur.getCollaborateur(idCollaborateur);
+    public DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Integer> listeIdCompetence) {
+        return null;
     }
 
-    @Override
-    public void creerCompetence(String nom, String competence) {
-        this.metierCompetence.creerCompetence(nom, competence);
-    }
+    // Codir
 
-    @Override
-    public Competence getCompetence(long idCompetence) {
-        return this.metierCompetence.getCompetence(idCompetence);
-    }
+    // Candidat
+
+    // CEO
+
 }

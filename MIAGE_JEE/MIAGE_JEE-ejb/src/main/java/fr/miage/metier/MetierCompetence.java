@@ -5,9 +5,8 @@
  */
 package fr.miage.metier;
 
-import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
-import fr.miage.facades.CollaborateurFacadeLocal;
+import fr.miage.facades.CandidatFacadeLocal;
 import fr.miage.facades.CompetenceFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,7 +19,7 @@ import javax.ejb.Stateless;
 public class MetierCompetence implements MetierCompetenceLocal {
 
     @EJB
-    private CollaborateurFacadeLocal collaborateurFacade;
+    private CandidatFacadeLocal candidatFacade;
 
     @EJB
     private CompetenceFacadeLocal competenceFacade;

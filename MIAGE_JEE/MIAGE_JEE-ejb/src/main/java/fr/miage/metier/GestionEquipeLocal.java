@@ -5,19 +5,21 @@
  */
 package fr.miage.metier;
 
-import fr.miage.entities.Collaborateur;
+import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
 
 import javax.ejb.Local;
+import java.util.HashSet;
 
 /**
  *
  * @author ddias
  */
 @Local
-public interface MetierCollaborateurLocal {
+public interface GestionEquipeLocal {
     
-    public void creerCollaborateur(String nom, String prenom, boolean codir, boolean manager, Equipe equipe);
-    public Collaborateur getCollaborateur(Long idCollaborateur);
-    
+    public void creerEquipe(String nom);
+    public Equipe getEquipe(Long idEquipe);
+
+    HashSet<Competence> listerCompetence(Long numEquipe);
 }

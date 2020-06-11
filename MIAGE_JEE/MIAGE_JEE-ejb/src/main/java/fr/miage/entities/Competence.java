@@ -6,10 +6,8 @@
 package fr.miage.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Collection;
+import javax.persistence.*;
 
 /**
  *
@@ -27,6 +25,12 @@ public class Competence implements Serializable {
     
     private String description;
 
+    @ManyToMany(mappedBy = "listeCompetences")
+    private Collection<Candidat> listeCandidat;
+
+    @ManyToMany(mappedBy = "listeCompetences")
+    private Collection<Candidat> listeDemandeCompetence;
+
     public Competence() {
     }
 
@@ -40,16 +44,16 @@ public class Competence implements Serializable {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String nomCompetence) {
+        this.nom = nomCompetence;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String descriptionCompetence) {
+        this.description = descriptionCompetence;
     }
     
     public Long getId() {
@@ -84,5 +88,5 @@ public class Competence implements Serializable {
     public String toString() {
         return "fr.miage.entities.Competence[ id=" + id + " ]";
     }
-    
+
 }

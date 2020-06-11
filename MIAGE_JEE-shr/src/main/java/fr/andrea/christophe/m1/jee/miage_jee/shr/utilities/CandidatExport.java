@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
  *
  * @author andreachristophe
  */
-public class CollaborateurExport implements Serializable {
+public class CandidatExport implements Serializable {
     
     private Long id;
     
@@ -23,18 +23,15 @@ public class CollaborateurExport implements Serializable {
     
     @OneToMany
     private Collection<CompetenceExport> competences;
-    
-    private String status;
 
-    public CollaborateurExport() {
+    public CandidatExport() {
     }
 
-    public CollaborateurExport(Long id, String nom, String prenom, Collection<CompetenceExport> competences, String status) {
+    public CandidatExport(Long id, String nom, String prenom, Collection<CompetenceExport> competences) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.competences = competences;
-        this.status = status;
     }
 
     public String getNom() {
@@ -61,14 +58,6 @@ public class CollaborateurExport implements Serializable {
         this.competences = competences;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Long getId() {
         return id;
     }
@@ -87,10 +76,10 @@ public class CollaborateurExport implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CollaborateurExport)) {
+        if (!(object instanceof CandidatExport)) {
             return false;
         }
-        CollaborateurExport other = (CollaborateurExport) object;
+        CandidatExport other = (CandidatExport) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -99,6 +88,6 @@ public class CollaborateurExport implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.miage.entities.Collaborateur[ id=" + id + " ]";
+        return "fr.miage.entities.Candidat[ id=" + id + " ]";
     }
 }
