@@ -10,7 +10,7 @@ import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatExport;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Competence;
-import fr.miage.metier.MetierCandidatLocal;
+import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,7 +24,7 @@ import java.util.*;
 public class ExpoLrd implements ExpoLrdRemote {
 
     @EJB
-    private MetierCandidatLocal metierCandidat;
+    private GestionCandidatLocal metierCandidat;
 
     @EJB
     private GestionDemandeCompetenceLocal metierCompetence;
@@ -39,7 +39,7 @@ public class ExpoLrd implements ExpoLrdRemote {
         
         List<CompetenceExport> competences = new ArrayList<CompetenceExport>();
         
-        for (Competence competence: candidat.getListeCompetences()) {
+        for (Competence competence: candidat.getCompetences()) {
             
             CompetenceExport c = new CompetenceExport();
             c.setId(competence.getId());

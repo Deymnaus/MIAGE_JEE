@@ -36,7 +36,7 @@ public class CandidatFacade extends AbstractFacade<Candidat> implements Candidat
         Candidat cnd = new Candidat();
         cnd.setNom(nom);
         cnd.setPrenom(prenom);
-        cnd.setListeCompetences(new ArrayList<Competence>());
+        cnd.setCompetences(new ArrayList<Competence>());
         this.create(cnd);
     }
     

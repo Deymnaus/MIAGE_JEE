@@ -17,16 +17,16 @@ public class Equipe implements Serializable {
     private String nom;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipe")
-    private List<Collaborateur> listeCollab;
+    private List<Collaborateur> collaborateurs;
 
     public Equipe(){
 
     }
 
-    public Equipe(Long id, String nom, List<Collaborateur> listeCollab){
+    public Equipe(Long id, String nom, List<Collaborateur> collaborateurs){
         this.id = id;
         this.nom = nom;
-        this.listeCollab = listeCollab;
+        this.collaborateurs = collaborateurs;
     }
 
     public long getId() {
@@ -46,11 +46,11 @@ public class Equipe implements Serializable {
     }
 
     @XmlTransient
-    public List<Collaborateur> getListeCollab() {
-        return listeCollab;
+    public List<Collaborateur> getCollaborateurs() {
+        return collaborateurs;
     }
 
-    public void setListeCollab(List<Collaborateur> listeCollab) {
-        this.listeCollab = listeCollab;
+    public void setCollaborateurs(List<Collaborateur> listeCollab) {
+        this.collaborateurs = listeCollab;
     }
 }

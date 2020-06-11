@@ -25,11 +25,11 @@ public class Competence implements Serializable {
     
     private String description;
 
-    @ManyToMany(mappedBy = "listeCompetences")
-    private Collection<Candidat> listeCandidat;
+    @ManyToMany(mappedBy = "competences")
+    private Collection<Candidat> candidats;
 
-    @ManyToMany(mappedBy = "listeCompetence")
-    private Collection<DemandeCompetence> listeDemandeCompetence;
+    @ManyToMany(mappedBy = "competences")
+    private Collection<DemandeCompetence> demandeCompetences;
 
     public Competence() {
     }

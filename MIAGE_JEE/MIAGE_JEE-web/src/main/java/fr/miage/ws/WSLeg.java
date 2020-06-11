@@ -5,6 +5,8 @@
  */
 package fr.miage.ws;
 
+import fr.miage.entities.Candidat;
+import fr.miage.entities.Candidature;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.exposition.ExpoLegLocal;
@@ -37,9 +39,15 @@ public class WSLeg {
         return ejbRef.demanderCompetence(numEquip, listCompetences);
     }
 
-    //Codir
+    // Codir
     @WebMethod(operationName = "listerCompetenceACombler")
     public HashSet<DemandeCompetence> listerCompetenceACombler() {
         return ejbRef.listerCompetenceACombler();
+    }
+
+    // Candidat
+    @WebMethod(operationName = "proposerCandidature")
+    public Candidature proposerCandidature(Long numCandidat, Long numFichePoste){
+        return ejbRef.proposerCandidature(numCandidat, numFichePoste);
     }
 }

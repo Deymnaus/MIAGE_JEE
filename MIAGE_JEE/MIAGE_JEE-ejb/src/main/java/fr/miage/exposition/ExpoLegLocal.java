@@ -6,6 +6,7 @@
 package fr.miage.exposition;
 
 import fr.miage.entities.Candidat;
+import fr.miage.entities.Candidature;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 
@@ -25,6 +26,8 @@ public interface ExpoLegLocal {
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listCompetences);
 
     HashSet<DemandeCompetence> listerCompetenceACombler();
+
+    Candidature proposerCandidature(Long numCandidat, Long numFichePoste);
 
     // Codir
     

@@ -25,6 +25,6 @@ public interface CandidatureFacadeLocal {
 
     int count();
 
-    public void creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut);
+    public Candidature creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut);
 
 }

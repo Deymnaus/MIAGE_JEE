@@ -29,7 +29,7 @@ public class CollaborateurFacade extends AbstractFacade<Collaborateur> implement
         Collaborateur clb = new Collaborateur();
         clb.setNom(nom);
         clb.setPrenom(prenom);
-        clb.setListeCompetences(new ArrayList<Competence>());
+        clb.setCompetences(new ArrayList<Competence>());
         clb.setCodir(codir);
         clb.setManager(manager);
         clb.setEquipe(equipe);
@@ -38,6 +38,6 @@ public class CollaborateurFacade extends AbstractFacade<Collaborateur> implement
 
     @Override
     public ArrayList<Competence> listerCompetence(Collaborateur collaborateur) {
-        return new ArrayList<>(collaborateur.getListeCompetences());
+        return new ArrayList<>(collaborateur.getCompetences());
     }
 }

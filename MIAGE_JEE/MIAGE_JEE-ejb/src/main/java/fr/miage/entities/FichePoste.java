@@ -22,7 +22,7 @@ public class FichePoste implements Serializable {
     private String presentationPoste;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fichePoste")
-    private List<Candidature> listeCandidature;
+    private List<Candidature> candidatures;
 
     public FichePoste() {
     }

@@ -1,6 +1,7 @@
 package fr.miage.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,19 +17,19 @@ public class DemandeCompetence implements Serializable {
     private Etat etat;
 
     @ManyToMany
-    private List<Competence> listeCompetence;
+    private List<Competence> competences;
 
     @OneToOne
     private Equipe equipe;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "demandeCompetence")
-    private List<FichePoste> listeFichePoste;
+    private List<FichePoste> fichePostes;
 
     public DemandeCompetence() {
     }
 
-    public DemandeCompetence(List<Competence> listeCompetence, Equipe equipe, Etat etat) {
-        this.listeCompetence = listeCompetence;
+    public DemandeCompetence(List<Competence> competences, Equipe equipe, Etat etat) {
+        this.competences = competences;
         this.equipe = equipe;
         this.etat = etat;
     }
@@ -41,12 +42,12 @@ public class DemandeCompetence implements Serializable {
         this.id = id;
     }
 
-    public List<Competence> getListeCompetence() {
-        return listeCompetence;
+    public List<Competence> getCompetences() {
+        return competences;
     }
 
-    public void setListeCompetence(List<Competence> listeCompetence) {
-        this.listeCompetence = listeCompetence;
+    public void setCompetences(List<Competence> listeCompetence) {
+        this.competences = listeCompetence;
     }
 
     public Equipe getEquipe() {
@@ -65,11 +66,12 @@ public class DemandeCompetence implements Serializable {
         this.etat = etat;
     }
 
-    public List<FichePoste> getListeFichePoste() {
-        return listeFichePoste;
+    @XmlTransient
+    public List<FichePoste> getFichePostes() {
+        return fichePostes;
     }
 
-    public void setListeFichePoste(List<FichePoste> listeFichePoste) {
-        this.listeFichePoste = listeFichePoste;
+    public void setFichePostes(List<FichePoste> listeFichePoste) {
+        this.fichePostes = listeFichePoste;
     }
 }

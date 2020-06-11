@@ -25,11 +25,12 @@ public class CandidatureFacade extends AbstractFacade<Candidature> implements Ca
     }
 
     @Override
-    public void creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut) {
+    public Candidature creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut) {
         Candidature c = new Candidature();
         c.setCandidat(candidat);
         c.setFichePoste(fichePoste);
         c.setStatut(statut);
         this.create(c);
+        return c;
     }
 }

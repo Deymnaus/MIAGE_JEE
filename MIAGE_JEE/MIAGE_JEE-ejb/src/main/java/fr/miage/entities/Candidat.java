@@ -27,19 +27,19 @@ public class Candidat implements Serializable {
     private String prenom;
 
     @ManyToMany
-    private Collection<Competence> listeCompetences;
+    private Collection<Competence> competences;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "candidat")
-    private List<Candidature> listeCandidature;
+    private List<Candidature> candidatures;
 
     public Candidat() {
     }
 
-    public Candidat(Long id, String nom, String prenom, Collection<Competence> listeCompetences) {
+    public Candidat(Long id, String nom, String prenom, Collection<Competence> competences) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.listeCompetences = listeCompetences;
+        this.competences = competences;
     }
 
     public String getNom() {
@@ -58,12 +58,12 @@ public class Candidat implements Serializable {
         this.prenom = prenom;
     }
 
-    public Collection<Competence> getListeCompetences() {
-        return listeCompetences;
+    public Collection<Competence> getCompetences() {
+        return competences;
     }
 
-    public void setListeCompetences(Collection<Competence> listeCompetences) {
-        this.listeCompetences = listeCompetences;
+    public void setCompetences(Collection<Competence> listeCompetences) {
+        this.competences = listeCompetences;
     }
 
     public Long getId() {

@@ -27,12 +27,12 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
     public void creerEquipe(String nom) {
         Equipe e = new Equipe();
         e.setNom(nom);
-        e.setListeCollab(new ArrayList<Collaborateur>());
+        e.setCollaborateurs(new ArrayList<Collaborateur>());
         this.create(e);
     }
 
     @Override
     public ArrayList<Collaborateur> listerCollaborateur(Equipe eq) {
-        return new ArrayList<>(eq.getListeCollab());
+        return new ArrayList<>(eq.getCollaborateurs());
     }
 }

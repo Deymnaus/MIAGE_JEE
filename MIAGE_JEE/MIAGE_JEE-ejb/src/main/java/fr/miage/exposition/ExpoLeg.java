@@ -5,11 +5,14 @@
  */
 package fr.miage.exposition;
 
+import fr.miage.entities.Candidature;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
+import fr.miage.exception.CandidatInexistantException;
 import fr.miage.exception.CompetenceInexistanteException;
 import fr.miage.exception.EquipeInexistanteException;
-import fr.miage.metier.MetierCandidatLocal;
+import fr.miage.exception.FichePosteInexistanteException;
+import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.MetierCollaborateurLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
 import fr.miage.metier.GestionEquipeLocal;
@@ -27,7 +30,7 @@ import java.util.HashSet;
 public class ExpoLeg implements ExpoLegLocal {
 
     @EJB
-    private MetierCandidatLocal metierCandidat;
+    private GestionCandidatLocal gestionCandidat;
 
     @EJB
     private GestionDemandeCompetenceLocal metierCompetence;
@@ -86,6 +89,17 @@ public class ExpoLeg implements ExpoLegLocal {
     }
 
     // Candidat
+
+    @Override
+    public Candidature proposerCandidature(Long numCandidat, Long numFichePoste) {
+        Candidature c = new Candidature();
+        try {
+            c = gestionCandidat.proposerCandidature(numCandidat, numFichePoste);
+        } catch (CandidatInexistantException | FichePosteInexistanteException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
 
     // CEO
 
