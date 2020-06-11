@@ -6,10 +6,12 @@
 package fr.miage.ws;
 
 import fr.miage.entities.Competence;
+import fr.miage.entities.DemandeCompetence;
 import fr.miage.exposition.ExpoLegLocal;
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -28,5 +30,8 @@ public class WSLeg {
         return ejbRef.listerCompetence(numEquipe);
     }
 
-
+    @WebMethod(operationName = "demanderCompetence")
+    public DemandeCompetence demandeCompetence(Long numEquip, ArrayList<Long> listCompetences){
+        return ejbRef.demanderCompetence(numEquip, listCompetences);
+    }
 }

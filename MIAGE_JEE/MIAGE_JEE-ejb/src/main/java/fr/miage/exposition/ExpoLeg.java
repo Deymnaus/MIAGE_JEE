@@ -7,10 +7,11 @@ package fr.miage.exposition;
 
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
-import fr.miage.entities.Equipe;
+import fr.miage.exception.CompetenceInexistanteException;
+import fr.miage.exception.EquipeInexistanteException;
 import fr.miage.metier.MetierCandidatLocal;
 import fr.miage.metier.MetierCollaborateurLocal;
-import fr.miage.metier.MetierCompetenceLocal;
+import fr.miage.metier.GestionDemandeCompetenceLocal;
 import fr.miage.metier.GestionEquipeLocal;
 
 import javax.ejb.EJB;
@@ -29,13 +30,16 @@ public class ExpoLeg implements ExpoLegLocal {
     private MetierCandidatLocal metierCandidat;
 
     @EJB
-    private MetierCompetenceLocal metierCompetence;
+    private GestionDemandeCompetenceLocal metierCompetence;
 
     @EJB
     private MetierCollaborateurLocal metierCollaborateur;
 
     @EJB
     private GestionEquipeLocal gestionEquipe;
+
+    @EJB
+    private GestionDemandeCompetenceLocal gestionDemandeCompetence;
 
 
     // Manager
@@ -47,7 +51,13 @@ public class ExpoLeg implements ExpoLegLocal {
      */
     @Override
     public HashSet<Competence> listerCompetence(Long numEquipe) {
-        return gestionEquipe.listerCompetence(numEquipe);
+        HashSet<Competence> listeCompetence = new HashSet<>();
+        try {
+            listeCompetence = gestionEquipe.listerCompetence(numEquipe);
+        } catch (EquipeInexistanteException e) {
+            e.printStackTrace();
+        }
+        return listeCompetence;
     }
 
     /**
@@ -57,8 +67,15 @@ public class ExpoLeg implements ExpoLegLocal {
      * @return
      */
     @Override
-    public DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Integer> listeIdCompetence) {
-        return null;
+    public DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listeIdCompetence) {
+        DemandeCompetence dc = new DemandeCompetence();
+        try {
+            dc =  gestionDemandeCompetence.demanderCompetence(numEquipe, listeIdCompetence);
+        } catch (EquipeInexistanteException | CompetenceInexistanteException e) {
+            e.printStackTrace();
+        }
+        return dc;
+
     }
 
     // Codir

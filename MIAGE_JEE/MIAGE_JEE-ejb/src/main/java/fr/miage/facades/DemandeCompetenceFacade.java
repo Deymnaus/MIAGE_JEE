@@ -25,10 +25,11 @@ public class DemandeCompetenceFacade extends AbstractFacade<DemandeCompetence> i
     }
 
     @Override
-    public void creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe) {
+    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe) {
         DemandeCompetence dc = new DemandeCompetence();
         dc.setListeCompetence(listeCompetence);
         dc.setEquipe(equipe);
         this.create(dc);
+        return dc;
     }
 }

@@ -22,7 +22,7 @@ public interface ExpoLegLocal {
 
     // Manager
     HashSet<Competence> listerCompetence(Long numEquipe);
-    DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Integer> listeIdCompetence);
+    DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listCompetences);
 
     // Codir
 

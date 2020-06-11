@@ -11,7 +11,7 @@ import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Competence;
 import fr.miage.metier.MetierCandidatLocal;
-import fr.miage.metier.MetierCompetenceLocal;
+import fr.miage.metier.GestionDemandeCompetenceLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.*;
@@ -27,7 +27,7 @@ public class ExpoLrd implements ExpoLrdRemote {
     private MetierCandidatLocal metierCandidat;
 
     @EJB
-    private MetierCompetenceLocal metierCompetence;
+    private GestionDemandeCompetenceLocal metierCompetence;
 
     public void creerCandidat(String nom, String prenom) {
         this.metierCandidat.creerCandidat(nom, prenom);

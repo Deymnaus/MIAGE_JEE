@@ -28,8 +28,8 @@ public class Competence implements Serializable {
     @ManyToMany(mappedBy = "listeCompetences")
     private Collection<Candidat> listeCandidat;
 
-    @ManyToMany(mappedBy = "listeCompetences")
-    private Collection<Candidat> listeDemandeCompetence;
+    @ManyToMany(mappedBy = "listeCompetence")
+    private Collection<DemandeCompetence> listeDemandeCompetence;
 
     public Competence() {
     }

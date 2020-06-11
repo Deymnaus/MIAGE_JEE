@@ -7,6 +7,7 @@ package fr.miage.metier;
 
 import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
+import fr.miage.exception.EquipeInexistanteException;
 
 import javax.ejb.Local;
 import java.util.HashSet;
@@ -21,5 +22,5 @@ public interface GestionEquipeLocal {
     public void creerEquipe(String nom);
     public Equipe getEquipe(Long idEquipe);
 
-    HashSet<Competence> listerCompetence(Long numEquipe);
+    HashSet<Competence> listerCompetence(Long numEquipe) throws EquipeInexistanteException;
 }

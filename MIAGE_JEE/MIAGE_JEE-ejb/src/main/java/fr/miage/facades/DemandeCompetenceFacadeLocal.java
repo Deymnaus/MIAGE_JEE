@@ -24,6 +24,6 @@ public interface DemandeCompetenceFacadeLocal {
 
     int count();
 
-    public void creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe);
+    public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe);
 
 }

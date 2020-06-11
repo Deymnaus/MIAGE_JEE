@@ -8,6 +8,7 @@ package fr.miage.metier;
 import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
+import fr.miage.exception.EquipeInexistanteException;
 import fr.miage.facades.CollaborateurFacade;
 import fr.miage.facades.CollaborateurFacadeLocal;
 import fr.miage.facades.EquipeFacadeLocal;
@@ -45,13 +46,18 @@ public class GestionEquipe implements GestionEquipeLocal {
     }
 
     @Override
-    public HashSet<Competence> listerCompetence(Long numEquipe) {
+    public HashSet<Competence> listerCompetence(Long numEquipe) throws EquipeInexistanteException {
         HashSet<Competence> listCompetence = new HashSet<>();
         Equipe eq = getEquipe(numEquipe);
+
+        if(eq == null)
+            throw new EquipeInexistanteException("L\'équipe n\'existe pas dans la base de données");
+
         ArrayList<Collaborateur> listCollab = equipeFacade.listerCollaborateur(eq);
         for(Collaborateur c : listCollab){
             listCompetence.addAll(collaborateurFacade.listerCompetence(c));
         }
+
         return listCompetence;
     }
 
