@@ -29,10 +29,5 @@ public interface ExpoLegLocal {
 
     Candidature proposerCandidature(Long numCandidat, Long numFichePoste);
 
-    // Codir
-    
-    // Candidat
-
-    // CEO
-
+    DemandeCompetence comblerCompetence(Long idDemandeCompetence);
 }

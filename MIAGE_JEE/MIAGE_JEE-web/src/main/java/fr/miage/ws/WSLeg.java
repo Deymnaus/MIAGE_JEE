@@ -45,6 +45,11 @@ public class WSLeg {
         return ejbRef.listerCompetenceACombler();
     }
 
+    @WebMethod(operationName = "comblerCompetence")
+    public DemandeCompetence comblerCompetence(Long idDemandeCompetence){
+        return ejbRef.comblerCompetence(idDemandeCompetence);
+    }
+
     // Candidat
     @WebMethod(operationName = "proposerCandidature")
     public Candidature proposerCandidature(Long numCandidat, Long numFichePoste){

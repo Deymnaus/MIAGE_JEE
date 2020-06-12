@@ -8,10 +8,7 @@ package fr.miage.exposition;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
-import fr.miage.exception.CandidatInexistantException;
-import fr.miage.exception.CompetenceInexistanteException;
-import fr.miage.exception.EquipeInexistanteException;
-import fr.miage.exception.FichePosteInexistanteException;
+import fr.miage.exception.*;
 import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.MetierCollaborateurLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
@@ -86,6 +83,17 @@ public class ExpoLeg implements ExpoLegLocal {
     @Override
     public HashSet<DemandeCompetence> listerCompetenceACombler() {
         return gestionDemandeCompetence.listerCompetenceACombler();
+    }
+
+    @Override
+    public DemandeCompetence comblerCompetence(Long idDemandeCompetence) {
+        DemandeCompetence dc = new DemandeCompetence();
+        try{
+            dc = gestionDemandeCompetence.comblerCompetence(idDemandeCompetence);
+        } catch (DemandeCompetenceInexistanteException e){
+            e.printStackTrace();
+        }
+        return dc;
     }
 
     // Candidat

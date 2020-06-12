@@ -8,6 +8,7 @@ package fr.miage.metier;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.exception.CompetenceInexistanteException;
+import fr.miage.exception.DemandeCompetenceInexistanteException;
 import fr.miage.exception.EquipeInexistanteException;
 
 import javax.ejb.Local;
@@ -27,4 +28,6 @@ public interface GestionDemandeCompetenceLocal {
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listeIdCompetence) throws EquipeInexistanteException, CompetenceInexistanteException;
 
     HashSet<DemandeCompetence> listerCompetenceACombler();
+
+    DemandeCompetence comblerCompetence(Long idDemandeCompetence) throws DemandeCompetenceInexistanteException;
 }

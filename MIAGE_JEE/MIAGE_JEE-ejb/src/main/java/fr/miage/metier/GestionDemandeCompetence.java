@@ -10,6 +10,7 @@ import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
 import fr.miage.entities.Etat;
 import fr.miage.exception.CompetenceInexistanteException;
+import fr.miage.exception.DemandeCompetenceInexistanteException;
 import fr.miage.exception.EquipeInexistanteException;
 import fr.miage.facades.*;
 
@@ -82,6 +83,16 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
         }
 
         return listeCompetenceACombler;
+    }
+
+    @Override
+    public DemandeCompetence comblerCompetence(Long idDemandeCompetence) throws DemandeCompetenceInexistanteException {
+        DemandeCompetence dc = demandeCompetenceFacade.find(idDemandeCompetence);
+        if(dc == null)
+            throw new DemandeCompetenceInexistanteException("La demande de competence à combler est inconnue dans la base de données");
+
+        dc.setEtat(Etat.Servie);
+        return dc;
     }
 
     // Add business logic below. (Right-click in editor and choose
