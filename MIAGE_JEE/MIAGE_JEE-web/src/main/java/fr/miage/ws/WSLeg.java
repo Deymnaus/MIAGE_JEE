@@ -43,13 +43,13 @@ public class WSLeg {
     }
 
     @WebMethod(operationName = "comblerCompetence")
-    public DemandeCompetence comblerCompetence(Long idDemandeCompetence){
+    public DemandeCompetence comblerCompetence(@WebParam(name = "idDemandeCompetence") Long idDemandeCompetence){
         return ejbRef.comblerCompetence(idDemandeCompetence);
     }
 
     // Candidat
     @WebMethod(operationName = "proposerCandidature")
-    public Candidature proposerCandidature(Long numCandidat, Long numFichePoste){
+    public Candidature proposerCandidature(@WebParam(name = "numCandidat") Long numCandidat, @WebParam(name = "numFichePoste") Long numFichePoste){
         return ejbRef.proposerCandidature(numCandidat, numFichePoste);
     }
 
@@ -59,7 +59,7 @@ public class WSLeg {
     }
 
     @WebMethod(operationName = "consulterDetailsOffre")
-    public FichePoste consulterDetailsOffre(Long idFichePoste){
+    public FichePoste consulterDetailsOffre(@WebParam(name = "idFichePoste") Long idFichePoste){
         return ejbRef.consulterDetailsOffre(idFichePoste);
     }
 

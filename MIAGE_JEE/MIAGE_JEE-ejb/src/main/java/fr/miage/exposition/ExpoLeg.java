@@ -28,9 +28,6 @@ public class ExpoLeg implements ExpoLegLocal {
     private GestionCandidatLocal gestionCandidat;
 
     @EJB
-    private MetierCollaborateurLocal metierCollaborateur;
-
-    @EJB
     private GestionEquipeLocal gestionEquipe;
 
     @EJB
