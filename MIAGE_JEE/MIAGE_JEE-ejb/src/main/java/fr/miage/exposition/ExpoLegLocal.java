@@ -5,10 +5,7 @@
  */
 package fr.miage.exposition;
 
-import fr.miage.entities.Candidat;
-import fr.miage.entities.Candidature;
-import fr.miage.entities.Competence;
-import fr.miage.entities.DemandeCompetence;
+import fr.miage.entities.*;
 
 import javax.ejb.Local;
 import java.util.ArrayList;
@@ -30,4 +27,6 @@ public interface ExpoLegLocal {
     Candidature proposerCandidature(Long numCandidat, Long numFichePoste);
 
     DemandeCompetence comblerCompetence(Long idDemandeCompetence);
+
+    HashSet<FichePoste> listerOffresDisponibles();
 }

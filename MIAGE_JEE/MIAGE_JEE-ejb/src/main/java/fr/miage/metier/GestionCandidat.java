@@ -17,6 +17,7 @@ import fr.miage.facades.FichePosteFacadeLocal;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.HashSet;
 
 /**
  *
@@ -55,6 +56,18 @@ public class GestionCandidat implements GestionCandidatLocal {
             throw new FichePosteInexistanteException("Le poste à candidater n\'existe pas");
 
         return candidatureFacade.creerCandidature(c, fp, Statut.EnAttente);
+    }
+
+    @Override
+    public HashSet<FichePoste> listerOffresDisponibles() {
+        HashSet<FichePoste> listeOffresDisponibles = new HashSet<>();
+
+        for(FichePoste fp : fichePosteFacade.findAll()) {
+            if(!fp.isArchivee())
+                listeOffresDisponibles.add(fp);
+        }
+
+        return listeOffresDisponibles;
     }
 
     // Add business logic below. (Right-click in editor and choose

@@ -54,7 +54,7 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     @Override
     public DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listeIdCompetence) throws EquipeInexistanteException, CompetenceInexistanteException {
         HashSet<Competence> listeCompetences = new HashSet<>();
-        Competence c = null;
+        Competence c;
         Equipe eq = equipeFacade.find(numEquipe);
 
         if(eq == null)
@@ -77,11 +77,10 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     public HashSet<DemandeCompetence> listerCompetenceACombler() {
         HashSet<DemandeCompetence> listeCompetenceACombler = new HashSet<>();
 
-        for (DemandeCompetence d : demandeCompetenceFacade.findAll()){
-            if(d.getEtat() == Etat.EnAttente)
-                listeCompetenceACombler.add(d);
+        for (DemandeCompetence dc : demandeCompetenceFacade.findAll()){
+            if(dc.getEtat() == Etat.EnAttente)
+                listeCompetenceACombler.add(dc);
         }
-
         return listeCompetenceACombler;
     }
 

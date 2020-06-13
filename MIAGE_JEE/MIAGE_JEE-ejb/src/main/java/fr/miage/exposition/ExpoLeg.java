@@ -8,6 +8,7 @@ package fr.miage.exposition;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
+import fr.miage.entities.FichePoste;
 import fr.miage.exception.*;
 import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.MetierCollaborateurLocal;
@@ -107,6 +108,11 @@ public class ExpoLeg implements ExpoLegLocal {
             e.printStackTrace();
         }
         return c;
+    }
+
+    @Override
+    public HashSet<FichePoste> listerOffresDisponibles() {
+        return gestionCandidat.listerOffresDisponibles();
     }
 
     // CEO

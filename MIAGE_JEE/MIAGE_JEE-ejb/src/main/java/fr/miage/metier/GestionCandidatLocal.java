@@ -7,10 +7,12 @@ package fr.miage.metier;
 
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
+import fr.miage.entities.FichePoste;
 import fr.miage.exception.CandidatInexistantException;
 import fr.miage.exception.FichePosteInexistanteException;
 
 import javax.ejb.Local;
+import java.util.HashSet;
 
 /**
  *
@@ -24,4 +26,6 @@ public interface GestionCandidatLocal {
     Candidat getCandidat(long idCandidat);
 
     Candidature proposerCandidature(Long numCandidat, Long numFichePoste) throws CandidatInexistantException, FichePosteInexistanteException;
+
+    HashSet<FichePoste> listerOffresDisponibles();
 }

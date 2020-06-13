@@ -21,6 +21,8 @@ public class FichePoste implements Serializable {
 
     private String presentationPoste;
 
+    private boolean archivee;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fichePoste")
     private List<Candidature> candidatures;
 
@@ -31,6 +33,7 @@ public class FichePoste implements Serializable {
         this.demandeCompetence = demandeCompetence;
         this.presentationEntreprise = presentationEntreprise;
         this.presentationPoste = presentationPoste;
+        this.archivee = false;
     }
 
     public String getPresentationEntreprise() {
@@ -63,5 +66,13 @@ public class FichePoste implements Serializable {
 
     public void setDemandeCompetence(DemandeCompetence demandeCompetence) {
         this.demandeCompetence = demandeCompetence;
+    }
+
+    public boolean isArchivee() {
+        return archivee;
+    }
+
+    public void setArchivee(boolean archivee) {
+        this.archivee = archivee;
     }
 }

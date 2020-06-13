@@ -5,10 +5,7 @@
  */
 package fr.miage.ws;
 
-import fr.miage.entities.Candidat;
-import fr.miage.entities.Candidature;
-import fr.miage.entities.Competence;
-import fr.miage.entities.DemandeCompetence;
+import fr.miage.entities.*;
 import fr.miage.exposition.ExpoLegLocal;
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
@@ -54,5 +51,10 @@ public class WSLeg {
     @WebMethod(operationName = "proposerCandidature")
     public Candidature proposerCandidature(Long numCandidat, Long numFichePoste){
         return ejbRef.proposerCandidature(numCandidat, numFichePoste);
+    }
+
+    @WebMethod(operationName = "listerOffresDisponibles")
+    public HashSet<FichePoste> listerOffresDisponibles(){
+        return ejbRef.listerOffresDisponibles();
     }
 }
