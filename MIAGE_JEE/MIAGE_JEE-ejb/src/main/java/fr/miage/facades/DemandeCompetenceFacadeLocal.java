@@ -6,6 +6,7 @@ import fr.miage.entities.Equipe;
 import fr.miage.entities.Etat;
 
 import javax.ejb.Local;
+import java.util.Collection;
 import java.util.List;
 
 @Local
@@ -27,4 +28,5 @@ public interface DemandeCompetenceFacadeLocal {
 
     public DemandeCompetence creerDemandeCompetence(List<Competence> listeCompetence, Equipe equipe, Etat etat);
 
+    Collection<DemandeCompetence> getDemandeCompetenceEnSouffrance();
 }

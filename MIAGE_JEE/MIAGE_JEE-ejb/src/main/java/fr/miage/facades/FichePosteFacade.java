@@ -8,6 +8,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Stateless
 public class FichePosteFacade extends AbstractFacade<FichePoste> implements FichePosteFacadeLocal {
@@ -31,5 +33,16 @@ public class FichePosteFacade extends AbstractFacade<FichePoste> implements Fich
         fp.setPresentationEntreprise(presentationEntreprise);
         fp.setPresentationPoste(presentationPoste);
         this.create(fp);
+    }
+
+    @Override
+    public HashSet<FichePoste> getPostesNonArchives() {
+        HashSet<FichePoste> postesNonArchives = new HashSet<>();
+        for(FichePoste fp : this.findAll()){
+            if(!fp.isArchivee())
+                postesNonArchives.add(fp);
+        }
+
+        return postesNonArchives;
     }
 }

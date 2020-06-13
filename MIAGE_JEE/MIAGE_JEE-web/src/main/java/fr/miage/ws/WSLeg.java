@@ -62,4 +62,10 @@ public class WSLeg {
     public FichePoste consulterDetailsOffre(Long idFichePoste){
         return ejbRef.consulterDetailsOffre(idFichePoste);
     }
+
+    // CEO
+    @WebMethod(operationName = "recolterStatistiques")
+    public String recolterStatistiques(){
+        return ejbRef.recolterStatistiques();
+    }
 }

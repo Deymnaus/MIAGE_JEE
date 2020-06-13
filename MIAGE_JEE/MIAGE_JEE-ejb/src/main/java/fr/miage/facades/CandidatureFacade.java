@@ -8,6 +8,8 @@ import fr.miage.entities.Statut;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Stateless
 public class CandidatureFacade extends AbstractFacade<Candidature> implements CandidatureFacadeLocal {
@@ -32,5 +34,15 @@ public class CandidatureFacade extends AbstractFacade<Candidature> implements Ca
         c.setStatut(statut);
         this.create(c);
         return c;
+    }
+
+    @Override
+    public HashSet<Candidature> getCandidaturesRetenues() {
+        HashSet<Candidature> candidaturesRetenues = new HashSet<>();
+        for(Candidature c : this.findAll()){
+            if(c.getStatut() == Statut.Accepte)
+                candidaturesRetenues.add(c);
+        }
+        return candidaturesRetenues;
     }
 }

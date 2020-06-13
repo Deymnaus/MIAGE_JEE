@@ -10,10 +10,7 @@ import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.FichePoste;
 import fr.miage.exception.*;
-import fr.miage.metier.GestionCandidatLocal;
-import fr.miage.metier.MetierCollaborateurLocal;
-import fr.miage.metier.GestionDemandeCompetenceLocal;
-import fr.miage.metier.GestionEquipeLocal;
+import fr.miage.metier.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,9 +28,6 @@ public class ExpoLeg implements ExpoLegLocal {
     private GestionCandidatLocal gestionCandidat;
 
     @EJB
-    private GestionDemandeCompetenceLocal metierCompetence;
-
-    @EJB
     private MetierCollaborateurLocal metierCollaborateur;
 
     @EJB
@@ -41,6 +35,9 @@ public class ExpoLeg implements ExpoLegLocal {
 
     @EJB
     private GestionDemandeCompetenceLocal gestionDemandeCompetence;
+
+    @EJB
+    private GestionStatistiqueLocal gestionStatistique;
 
 
     // Manager
@@ -124,6 +121,12 @@ public class ExpoLeg implements ExpoLegLocal {
             e.printStackTrace();
         }
         return fp;
+    }
+
+    // Manager
+    @Override
+    public String recolterStatistiques() {
+        return gestionStatistique.recolterStatistiques();
     }
 
     // CEO

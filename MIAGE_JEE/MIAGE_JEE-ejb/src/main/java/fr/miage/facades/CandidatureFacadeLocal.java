@@ -6,6 +6,7 @@ import fr.miage.entities.FichePoste;
 import fr.miage.entities.Statut;
 
 import javax.ejb.Local;
+import java.util.Collection;
 import java.util.List;
 
 @Local
@@ -27,4 +28,5 @@ public interface CandidatureFacadeLocal {
 
     public Candidature creerCandidature(Candidat candidat, FichePoste fichePoste, Statut statut);
 
+    Collection<Candidature> getCandidaturesRetenues();
 }

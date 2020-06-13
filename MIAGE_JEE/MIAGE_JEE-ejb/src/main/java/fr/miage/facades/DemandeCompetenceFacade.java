@@ -8,6 +8,7 @@ import fr.miage.entities.Etat;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
 
 @Stateless
@@ -33,5 +34,15 @@ public class DemandeCompetenceFacade extends AbstractFacade<DemandeCompetence> i
         dc.setEtat(etat);
         this.create(dc);
         return dc;
+    }
+
+    @Override
+    public HashSet<DemandeCompetence> getDemandeCompetenceEnSouffrance() {
+        HashSet<DemandeCompetence> demandeCompetencesEnSouffrance = new HashSet<>();
+        for (DemandeCompetence dc : this.findAll()) {
+            if (dc.getEtat() == Etat.EnAttente)
+                demandeCompetencesEnSouffrance.add(dc);
+        }
+        return demandeCompetencesEnSouffrance;
     }
 }

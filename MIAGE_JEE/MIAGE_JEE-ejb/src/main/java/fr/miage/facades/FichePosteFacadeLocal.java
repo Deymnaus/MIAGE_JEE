@@ -4,6 +4,7 @@ import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.FichePoste;
 
 import javax.ejb.Local;
+import java.util.Collection;
 import java.util.List;
 
 @Local
@@ -25,4 +26,5 @@ public interface FichePosteFacadeLocal {
 
     public void creerFichePoste(DemandeCompetence demandeCompetence, String presentationEntreprise, String presentationPoste);
 
+    Collection<FichePoste> getPostesNonArchives();
 }

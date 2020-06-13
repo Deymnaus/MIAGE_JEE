@@ -31,4 +31,6 @@ public interface ExpoLegLocal {
     HashSet<Long> listerOffresDisponibles();
 
     FichePoste consulterDetailsOffre(Long idFichePoste);
+
+    String recolterStatistiques();
 }
