@@ -15,9 +15,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ExpoLrdRemote {
-    
-    public void creerCandidat(String nom, String prenom);
-    public CandidatExport getCandidat(long idCandidat);
-    public void creerCompetence(String nom, String competence);
-    public CompetenceExport getCompetence(long idCompetence);
+
 }

@@ -13,6 +13,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -45,6 +46,16 @@ public class WSLeg {
     @WebMethod(operationName = "comblerCompetence")
     public DemandeCompetence comblerCompetence(@WebParam(name = "idDemandeCompetence") Long idDemandeCompetence){
         return ejbRef.comblerCompetence(idDemandeCompetence);
+    }
+
+    @WebMethod(operationName = "listerCandidatures")
+    public List<Candidature> listerCandidatures(){
+        return ejbRef.listerCandidatures();
+    }
+
+    @WebMethod(operationName = "sePrononcerSurCandidature")
+    public Candidature sePrononcerSurCandidature(@WebParam(name = "idCandidature") Long idCandidature, @WebParam(name = "statut") Statut statut){
+        return ejbRef.sePrononcerSurCandidature(idCandidature, statut);
     }
 
     // Candidat

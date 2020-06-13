@@ -23,53 +23,5 @@ import java.util.*;
 @Stateless
 public class ExpoLrd implements ExpoLrdRemote {
 
-    @EJB
-    private GestionCandidatLocal metierCandidat;
 
-    @EJB
-    private GestionDemandeCompetenceLocal metierCompetence;
-
-    public void creerCandidat(String nom, String prenom) {
-        this.metierCandidat.creerCandidat(nom, prenom);
-    }
-
-    public CandidatExport getCandidat(long idCandidat) {
-        
-        Candidat candidat = this.metierCandidat.getCandidat(idCandidat);
-        
-        List<CompetenceExport> competences = new ArrayList<CompetenceExport>();
-        
-        for (Competence competence: candidat.getCompetences()) {
-            
-            CompetenceExport c = new CompetenceExport();
-            c.setId(competence.getId());
-            c.setNom(competence.getNom());
-            c.setDescription(competence.getDescription());
-            
-            competences.add(c);     
-        }
-        
-        CandidatExport c = new CandidatExport();
-        c.setId(candidat.getId());
-        c.setNom(candidat.getNom());
-        c.setPrenom(candidat.getPrenom());
-        c.setCompetences(competences);
-        
-        return c;
-    }
-
-    public void creerCompetence(String nom, String competence) {
-        this.metierCompetence.creerCompetence(nom, competence);
-    }
-
-    public CompetenceExport getCompetence(long idCompetence) {
-        Competence competence = this.metierCompetence.getCompetence(idCompetence);
-        
-        CompetenceExport c = new CompetenceExport();
-        c.setId(competence.getId());
-        c.setNom(competence.getNom());
-        c.setDescription(competence.getDescription());
-            
-        return c;
-    }
 }
