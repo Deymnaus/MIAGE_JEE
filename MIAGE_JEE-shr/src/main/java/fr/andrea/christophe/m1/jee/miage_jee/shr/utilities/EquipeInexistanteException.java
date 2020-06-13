@@ -1,4 +1,4 @@
-package fr.miage.exception;
+package fr.andrea.christophe.m1.jee.miage_jee.shr.utilities;
 
 public class EquipeInexistanteException extends Exception {
 

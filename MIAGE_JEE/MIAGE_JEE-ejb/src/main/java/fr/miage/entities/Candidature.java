@@ -1,5 +1,7 @@
 package fr.miage.entities;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

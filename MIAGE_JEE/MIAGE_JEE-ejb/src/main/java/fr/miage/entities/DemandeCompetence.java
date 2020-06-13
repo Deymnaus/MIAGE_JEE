@@ -1,5 +1,7 @@
 package fr.miage.entities;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Etat;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;

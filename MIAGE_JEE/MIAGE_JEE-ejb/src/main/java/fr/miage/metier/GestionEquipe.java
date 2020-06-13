@@ -8,8 +8,7 @@ package fr.miage.metier;
 import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
-import fr.miage.exception.EquipeInexistanteException;
-import fr.miage.facades.CollaborateurFacade;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.EquipeInexistanteException;
 import fr.miage.facades.CollaborateurFacadeLocal;
 import fr.miage.facades.EquipeFacadeLocal;
 

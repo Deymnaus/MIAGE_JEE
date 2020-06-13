@@ -8,10 +8,10 @@ package fr.miage.metier;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
-import fr.miage.entities.Statut;
-import fr.miage.exception.CandidatInexistantException;
-import fr.miage.exception.CandidatureInexistantException;
-import fr.miage.exception.FichePosteInexistanteException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatInexistantException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatureInexistantException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.FichePosteInexistanteException;
 
 import javax.ejb.Local;
 import java.util.HashSet;

@@ -5,9 +5,10 @@
  */
 package fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote;
 
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatExport;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
+
 import javax.ejb.Remote;
+import java.util.HashSet;
 
 /**
  *
@@ -15,5 +16,13 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ExpoLrdRemote {
+     HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
 
+     HashSet<CompetenceExport> listerCompetencesCollaborateurs();
+
+     void proposerFichePoste(Long idDemandeCompetence);
+
+     HashSet<CandidatureExport> listerCandidatures();
+
+     void changerStatutCandidature(Long idCandidature, Statut statut);
 }

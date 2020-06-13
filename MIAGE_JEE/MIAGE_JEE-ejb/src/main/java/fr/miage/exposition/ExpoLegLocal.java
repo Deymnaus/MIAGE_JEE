@@ -5,6 +5,7 @@
  */
 package fr.miage.exposition;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
 import fr.miage.entities.*;
 
 import javax.ejb.Local;
@@ -21,6 +22,7 @@ public interface ExpoLegLocal {
 
     // Manager
     HashSet<Competence> listerCompetence(Long numEquipe);
+
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listCompetences);
 
     HashSet<DemandeCompetence> listerCompetenceACombler();

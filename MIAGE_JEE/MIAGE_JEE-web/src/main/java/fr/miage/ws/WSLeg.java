@@ -5,6 +5,7 @@
  */
 package fr.miage.ws;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
 import fr.miage.entities.*;
 import fr.miage.exposition.ExpoLegLocal;
 import javax.ejb.EJB;

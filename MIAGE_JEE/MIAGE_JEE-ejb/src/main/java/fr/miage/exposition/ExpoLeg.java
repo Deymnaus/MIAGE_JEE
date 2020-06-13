@@ -5,8 +5,8 @@
  */
 package fr.miage.exposition;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.*;
-import fr.miage.exception.*;
 import fr.miage.metier.*;
 
 import javax.ejb.EJB;

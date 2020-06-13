@@ -3,7 +3,7 @@ package fr.miage.facades;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
-import fr.miage.entities.Etat;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Etat;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

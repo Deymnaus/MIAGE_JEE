@@ -3,12 +3,11 @@ package fr.miage.facades;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
-import fr.miage.entities.Statut;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collection;
 import java.util.HashSet;
 
 @Stateless

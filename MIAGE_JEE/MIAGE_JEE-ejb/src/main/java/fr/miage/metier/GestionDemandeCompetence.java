@@ -8,10 +8,10 @@ package fr.miage.metier;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
-import fr.miage.entities.Etat;
-import fr.miage.exception.CompetenceInexistanteException;
-import fr.miage.exception.DemandeCompetenceInexistanteException;
-import fr.miage.exception.EquipeInexistanteException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Etat;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceInexistanteException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceInexistanteException;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.EquipeInexistanteException;
 import fr.miage.facades.*;
 
 import javax.ejb.EJB;
