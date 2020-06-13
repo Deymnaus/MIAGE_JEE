@@ -28,5 +28,7 @@ public interface ExpoLegLocal {
 
     DemandeCompetence comblerCompetence(Long idDemandeCompetence);
 
-    HashSet<FichePoste> listerOffresDisponibles();
+    HashSet<Long> listerOffresDisponibles();
+
+    FichePoste consulterDetailsOffre(Long idFichePoste);
 }

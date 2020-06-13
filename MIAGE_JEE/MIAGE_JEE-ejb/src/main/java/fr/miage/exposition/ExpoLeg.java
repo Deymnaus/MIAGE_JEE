@@ -111,8 +111,19 @@ public class ExpoLeg implements ExpoLegLocal {
     }
 
     @Override
-    public HashSet<FichePoste> listerOffresDisponibles() {
+    public HashSet<Long> listerOffresDisponibles() {
         return gestionCandidat.listerOffresDisponibles();
+    }
+
+    @Override
+    public FichePoste consulterDetailsOffre(Long idFichePoste) {
+        FichePoste fp = new FichePoste();
+        try {
+            fp = gestionCandidat.consulterDetailsOffre(idFichePoste);
+        } catch (FichePosteInexistanteException e) {
+            e.printStackTrace();
+        }
+        return fp;
     }
 
     // CEO

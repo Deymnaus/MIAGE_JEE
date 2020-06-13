@@ -59,15 +59,25 @@ public class GestionCandidat implements GestionCandidatLocal {
     }
 
     @Override
-    public HashSet<FichePoste> listerOffresDisponibles() {
-        HashSet<FichePoste> listeOffresDisponibles = new HashSet<>();
+    public HashSet<Long> listerOffresDisponibles() {
+        HashSet<Long> listeOffresDisponibles = new HashSet<>();
 
         for(FichePoste fp : fichePosteFacade.findAll()) {
             if(!fp.isArchivee())
-                listeOffresDisponibles.add(fp);
+                listeOffresDisponibles.add(fp.getId());
         }
 
         return listeOffresDisponibles;
+    }
+
+    @Override
+    public FichePoste consulterDetailsOffre(Long idFichePoste) throws FichePosteInexistanteException {
+        FichePoste fp = fichePosteFacade.find(idFichePoste);
+
+        if(fp == null)
+            throw new FichePosteInexistanteException("L\'offre demandée n\'existe pas");
+
+        return fp;
     }
 
     // Add business logic below. (Right-click in editor and choose

@@ -27,5 +27,7 @@ public interface GestionCandidatLocal {
 
     Candidature proposerCandidature(Long numCandidat, Long numFichePoste) throws CandidatInexistantException, FichePosteInexistanteException;
 
-    HashSet<FichePoste> listerOffresDisponibles();
+    HashSet<Long> listerOffresDisponibles();
+
+    FichePoste consulterDetailsOffre(Long idFichePoste) throws FichePosteInexistanteException;
 }

@@ -54,7 +54,12 @@ public class WSLeg {
     }
 
     @WebMethod(operationName = "listerOffresDisponibles")
-    public HashSet<FichePoste> listerOffresDisponibles(){
+    public HashSet<Long> listerOffresDisponibles(){
         return ejbRef.listerOffresDisponibles();
+    }
+
+    @WebMethod(operationName = "consulterDetailsOffre")
+    public FichePoste consulterDetailsOffre(Long idFichePoste){
+        return ejbRef.consulterDetailsOffre(idFichePoste);
     }
 }
