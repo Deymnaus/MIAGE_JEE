@@ -5,10 +5,7 @@
  */
 package fr.miage.exposition;
 
-import fr.miage.entities.Candidature;
-import fr.miage.entities.Competence;
-import fr.miage.entities.DemandeCompetence;
-import fr.miage.entities.FichePoste;
+import fr.miage.entities.*;
 import fr.miage.exception.*;
 import fr.miage.metier.*;
 
@@ -16,6 +13,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -91,6 +89,22 @@ public class ExpoLeg implements ExpoLegLocal {
         return dc;
     }
 
+    @Override
+    public List<Candidature> listerCandidatures() {
+        return gestionCandidat.listerCandidatures();
+    }
+
+    @Override
+    public Candidature sePrononcerSurCandidature(Long idCandidature, Statut statut) {
+        Candidature cd = new Candidature();
+        try {
+             cd = gestionCandidat.sePrononcerSurCandidature(idCandidature, statut);
+        } catch (CandidatureInexistantException e) {
+            e.printStackTrace();
+        }
+        return cd;
+    }
+
     // Candidat
 
     @Override
@@ -120,12 +134,10 @@ public class ExpoLeg implements ExpoLegLocal {
         return fp;
     }
 
-    // Manager
+    // CEO
     @Override
     public String recolterStatistiques() {
         return gestionStatistique.recolterStatistiques();
     }
-
-    // CEO
 
 }

@@ -10,6 +10,7 @@ import fr.miage.entities.*;
 import javax.ejb.Local;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -33,4 +34,8 @@ public interface ExpoLegLocal {
     FichePoste consulterDetailsOffre(Long idFichePoste);
 
     String recolterStatistiques();
+
+    List<Candidature> listerCandidatures();
+
+    Candidature sePrononcerSurCandidature(Long idCandidature, Statut statut);
 }

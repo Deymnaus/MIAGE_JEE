@@ -8,11 +8,14 @@ package fr.miage.metier;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
+import fr.miage.entities.Statut;
 import fr.miage.exception.CandidatInexistantException;
+import fr.miage.exception.CandidatureInexistantException;
 import fr.miage.exception.FichePosteInexistanteException;
 
 import javax.ejb.Local;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -30,4 +33,8 @@ public interface GestionCandidatLocal {
     HashSet<Long> listerOffresDisponibles();
 
     FichePoste consulterDetailsOffre(Long idFichePoste) throws FichePosteInexistanteException;
+
+    List<Candidature> listerCandidatures();
+
+    Candidature sePrononcerSurCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException;
 }

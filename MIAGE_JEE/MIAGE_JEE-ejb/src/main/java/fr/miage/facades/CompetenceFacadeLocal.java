@@ -29,5 +29,7 @@ public interface CompetenceFacadeLocal {
     List<Competence> findRange(int[] range);
 
     int count();
+
+    void creerCompetence(String nom, String description);
     
 }

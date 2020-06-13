@@ -29,5 +29,12 @@ public class CompetenceFacade extends AbstractFacade<Competence> implements Comp
         super(Competence.class);
     }
 
-    
+
+    @Override
+    public void creerCompetence(String nom, String description) {
+        Competence c = new Competence();
+        c.setNom(nom);
+        c.setDescription(description);
+        this.create(c);
+    }
 }
