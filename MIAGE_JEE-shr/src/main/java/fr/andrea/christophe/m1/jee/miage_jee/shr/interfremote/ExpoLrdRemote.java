@@ -8,6 +8,8 @@ package fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 
 import javax.ejb.Remote;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -18,7 +20,7 @@ import java.util.HashSet;
 public interface ExpoLrdRemote {
      HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
 
-     HashSet<CompetenceExport> listerCompetencesCollaborateurs();
+     HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
 
      void proposerFichePoste(Long idDemandeCompetence);
 

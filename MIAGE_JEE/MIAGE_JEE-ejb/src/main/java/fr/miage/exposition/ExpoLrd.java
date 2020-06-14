@@ -7,10 +7,6 @@ package fr.miage.exposition;
 
 import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
-import fr.miage.entities.Candidat;
-import fr.miage.entities.Competence;
-import fr.miage.entities.DemandeCompetence;
-import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,8 +28,8 @@ public class ExpoLrd implements ExpoLrdRemote {
     }
 
     @Override
-    public HashSet<CompetenceExport> listerCompetencesCollaborateurs() {
-        return null;
+    public HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs() {
+        return gestionDemandeCompetence.listerCompetencesCollaborateurs();
     }
 
     @Override

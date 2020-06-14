@@ -1,6 +1,7 @@
 package fr.andrea.christophe.m1.jee.miage_jee.shr.utilities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class CollaborateurExport extends CandidatExport implements Serializable {
@@ -14,7 +15,7 @@ public class CollaborateurExport extends CandidatExport implements Serializable 
     public CollaborateurExport() {
     }
 
-    public CollaborateurExport(Long id, String nom, String prenom, Collection<CompetenceExport> competences, boolean codir, boolean manager, EquipeExport equipeExport) {
+    public CollaborateurExport(Long id, String nom, String prenom, ArrayList<CompetenceExport> competences, boolean codir, boolean manager, EquipeExport equipeExport) {
         super(id, nom, prenom, competences);
         this.codir = codir;
         this.manager = manager;

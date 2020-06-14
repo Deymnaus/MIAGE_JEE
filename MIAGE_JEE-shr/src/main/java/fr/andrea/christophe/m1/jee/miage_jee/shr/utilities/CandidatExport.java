@@ -6,6 +6,7 @@
 package fr.andrea.christophe.m1.jee.miage_jee.shr.utilities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.OneToMany;
 
@@ -22,12 +23,12 @@ public class CandidatExport implements Serializable {
     private String prenom;
     
     @OneToMany
-    private Collection<CompetenceExport> competences;
+    private ArrayList<CompetenceExport> competences;
 
     public CandidatExport() {
     }
 
-    public CandidatExport(Long id, String nom, String prenom, Collection<CompetenceExport> competences) {
+    public CandidatExport(Long id, String nom, String prenom, ArrayList<CompetenceExport> competences) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -50,11 +51,11 @@ public class CandidatExport implements Serializable {
         this.prenom = prenom;
     }
 
-    public Collection<CompetenceExport> getCompetences() {
+    public ArrayList<CompetenceExport> getCompetences() {
         return competences;
     }
 
-    public void setCompetences(Collection<CompetenceExport> competences) {
+    public void setCompetences(ArrayList<CompetenceExport> competences) {
         this.competences = competences;
     }
 

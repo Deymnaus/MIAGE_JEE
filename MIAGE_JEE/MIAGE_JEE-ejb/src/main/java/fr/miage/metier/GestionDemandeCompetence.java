@@ -15,6 +15,7 @@ import fr.miage.utils.Traducteur;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -32,6 +33,9 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
 
     @EJB
     private EquipeFacadeLocal equipeFacade;
+
+    @EJB
+    private CollaborateurFacadeLocal collaborateurFacade;
 
     
     @Override
@@ -95,6 +99,20 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     @Override
     public HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes() {
         return new HashSet<>(Traducteur.listeDemandeCompetenceToDemandeCompetenceExport(demandeCompetenceFacade.findAll()));
+    }
+
+    @Override
+    public HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs() {
+        HashSet<CollaborateurExport> collaborateurExports = new HashSet<>(Traducteur.listeCollaborateurToListeCollaborateurExport(collaborateurFacade.findAll()));
+        HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listeCompetencesCollaborateurs = new HashMap<>();
+
+        for(CollaborateurExport ce : collaborateurExports){
+            if(listeCompetencesCollaborateurs.get(ce) == null){
+                listeCompetencesCollaborateurs.put(ce, ce.getCompetences());
+            }
+        }
+
+        return listeCompetencesCollaborateurs;
     }
 
     // Add business logic below. (Right-click in editor and choose

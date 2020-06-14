@@ -5,15 +5,13 @@
  */
 package fr.miage.metier;
 
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceExport;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceInexistanteException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceInexistanteException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.EquipeInexistanteException;
 
 import javax.ejb.Local;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -33,4 +31,6 @@ public interface GestionDemandeCompetenceLocal {
     DemandeCompetence comblerCompetence(Long idDemandeCompetence) throws DemandeCompetenceInexistanteException;
 
     HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
+
+    HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
 }

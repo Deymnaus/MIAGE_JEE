@@ -8,9 +8,15 @@ package fr.miage.views;
 
 
 import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CollaborateurExport;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceExport;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceExport;
+import fr.miage.controllers.CompetenceController;
 import fr.miage.controllers.CompetencesDemandesController;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +32,8 @@ import javax.swing.table.TableColumn;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    CompetencesDemandesController competencesDemandesController; 
+    CompetencesDemandesController competencesDemandesController;
+    CompetenceController competenceController;
     
     /**
      * Creates new form MainFrame
@@ -36,6 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
             InitialContext ctx = new InitialContext();
             ExpoLrdRemote expoLrdRemote = (ExpoLrdRemote) ctx.lookup("fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote");
             this.competencesDemandesController = new CompetencesDemandesController(expoLrdRemote);
+            this.competenceController = new CompetenceController(expoLrdRemote);
             initComponents();
         } catch (NamingException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,25 +59,45 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        listeCompetencesCollaborateurButton = new javax.swing.JButton();
+        redigerFichePosteButton = new javax.swing.JButton();
+        gérerCandidaturesbutton = new javax.swing.JButton();
+        concretiserEmbaucheButton = new javax.swing.JButton();
         listeDemandeCompetencesButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        listeCompetencesCollaborateurButton.setText("Lister competences des collaborateurs");
+        listeCompetencesCollaborateurButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listeCompetencesCollaborateurButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton1");
+        redigerFichePosteButton.setText("Rediger fiche de poste");
+        redigerFichePosteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redigerFichePosteButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton1");
+        gérerCandidaturesbutton.setText("Gérer candidature");
+        gérerCandidaturesbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gérerCandidaturesbuttonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton1");
+        concretiserEmbaucheButton.setText("Concrétiser embauche");
+        concretiserEmbaucheButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                concretiserEmbaucheButtonActionPerformed(evt);
+            }
+        });
 
-        listeDemandeCompetencesButton.setText("Lister compétences des collaborateur");
+        listeDemandeCompetencesButton.setText("Lister demandes compétences des équipes");
         listeDemandeCompetencesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listeDemandeCompetencesButtonActionPerformed(evt);
@@ -94,10 +122,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(listeDemandeCompetencesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(concretiserEmbaucheButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gérerCandidaturesbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(redigerFichePosteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listeCompetencesCollaborateurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(77, 77, 77)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -112,20 +140,53 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(listeDemandeCompetencesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(listeCompetencesCollaborateurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(redigerFichePosteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(gérerCandidaturesbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(concretiserEmbaucheButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listeDemandeCompetencesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeDemandeCompetencesButtonActionPerformed
+    private void concretiserEmbaucheButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concretiserEmbaucheButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_concretiserEmbaucheButtonActionPerformed
+
+    private void gérerCandidaturesbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gérerCandidaturesbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gérerCandidaturesbuttonActionPerformed
+
+    private void redigerFichePosteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redigerFichePosteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_redigerFichePosteButtonActionPerformed
+
+    private void listeCompetencesCollaborateurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listeCompetencesCollaborateurButtonActionPerformed
+        HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listeCompetencesCollaborateurs = this.competenceController.listerCompetencesCollaborateurs();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nom");
+        model.addColumn("Prenom");
+        model.addColumn("Competences");
+        this.jTable1.setModel(model);
+
+        for(CollaborateurExport cle : listeCompetencesCollaborateurs.keySet()){
+            DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
+            StringBuilder competences = new StringBuilder();
+            for(CompetenceExport ce : listeCompetencesCollaborateurs.get(cle)){
+                competences.append(ce.getNom()).append(" ; ");
+            }
+            tableModel.addRow(new Object[]{cle.getId(), cle.getNom(), cle.getPrenom(), competences.toString()});
+        }
+
+    }//GEN-LAST:event_listeCompetencesCollaborateurButtonActionPerformed
+
+    private void listeDemandeCompetencesButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                              
         HashSet<DemandeCompetenceExport> demandeCompetenceExports = this.competencesDemandesController.listerCompetencesDemandeesEquipes();
 
         DefaultTableModel model = new DefaultTableModel();
@@ -196,12 +257,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton concretiserEmbaucheButton;
+    private javax.swing.JButton gérerCandidaturesbutton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton listeCompetencesCollaborateurButton;
     private javax.swing.JButton listeDemandeCompetencesButton;
+    private javax.swing.JButton redigerFichePosteButton;
     // End of variables declaration//GEN-END:variables
 }

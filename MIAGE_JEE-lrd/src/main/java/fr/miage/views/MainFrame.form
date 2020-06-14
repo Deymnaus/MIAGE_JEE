@@ -27,10 +27,10 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="listeDemandeCompetencesButton" min="-2" pref="202" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="202" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="202" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="202" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Component id="concretiserEmbaucheButton" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Component id="gérerCandidaturesbutton" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Component id="redigerFichePosteButton" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Component id="listeCompetencesCollaborateurButton" min="-2" pref="202" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="865" max="-2" attributes="0"/>
@@ -48,13 +48,13 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="listeDemandeCompetencesButton" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="listeCompetencesCollaborateurButton" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="redigerFichePosteButton" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="gérerCandidaturesbutton" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="concretiserEmbaucheButton" min="-2" pref="74" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="61" max="32767" attributes="0"/>
@@ -63,29 +63,41 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="listeCompetencesCollaborateurButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Lister competences des collaborateurs"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listeCompetencesCollaborateurButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="redigerFichePosteButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Rediger fiche de poste"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="redigerFichePosteButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="g&#xe9;rerCandidaturesbutton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="G&#xe9;rer candidature"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="g&#xe9;rerCandidaturesbuttonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="concretiserEmbaucheButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Concr&#xe9;tiser embauche"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="concretiserEmbaucheButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="listeDemandeCompetencesButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lister comp&#xe9;tences des collaborateur"/>
+        <Property name="text" type="java.lang.String" value="Lister demandes comp&#xe9;tences des &#xe9;quipes"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listeDemandeCompetencesButtonActionPerformed"/>
