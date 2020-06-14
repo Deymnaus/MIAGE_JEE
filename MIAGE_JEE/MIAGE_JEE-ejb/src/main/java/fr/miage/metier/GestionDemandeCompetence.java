@@ -5,14 +5,12 @@
  */
 package fr.miage.metier;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Etat;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceInexistanteException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceInexistanteException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.EquipeInexistanteException;
 import fr.miage.facades.*;
+import fr.miage.utils.Traducteur;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -92,6 +90,11 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
 
         dc.setEtat(Etat.Servie);
         return dc;
+    }
+
+    @Override
+    public HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes() {
+        return new HashSet<>(Traducteur.listeDemandeCompetenceToDemandeCompetenceExport(demandeCompetenceFacade.findAll()));
     }
 
     // Add business logic below. (Right-click in editor and choose

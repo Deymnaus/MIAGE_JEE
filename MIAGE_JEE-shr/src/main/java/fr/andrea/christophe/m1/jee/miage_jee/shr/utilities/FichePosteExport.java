@@ -15,18 +15,18 @@ public class FichePosteExport implements Serializable {
 
     private boolean archivee;
 
-    private List<CandidatExport> candidatExports;
+    private List<CandidatureExport> candidatureExports;
 
     public FichePosteExport() {
     }
 
-    public FichePosteExport(Long id, DemandeCompetenceExport demandeCompetenceExport, String presentationEntreprise, String prensentationPoste, boolean archivee, List<CandidatExport> candidatExports) {
+    public FichePosteExport(Long id, DemandeCompetenceExport demandeCompetenceExport, String presentationEntreprise, String prensentationPoste, boolean archivee, List<CandidatureExport> candidatureExports) {
         this.id = id;
         this.demandeCompetenceExport = demandeCompetenceExport;
         this.presentationEntreprise = presentationEntreprise;
         this.prensentationPoste = prensentationPoste;
         this.archivee = archivee;
-        this.candidatExports = candidatExports;
+        this.candidatureExports = candidatureExports;
     }
 
     public Long getId() {
@@ -69,11 +69,11 @@ public class FichePosteExport implements Serializable {
         this.archivee = archivee;
     }
 
-    public List<CandidatExport> getCandidatExports() {
-        return candidatExports;
+    public List<CandidatureExport> getCandidatureExports() {
+        return candidatureExports;
     }
 
-    public void setCandidatExports(List<CandidatExport> candidatExports) {
-        this.candidatExports = candidatExports;
+    public void setCandidatureExports(List<CandidatureExport> candidatureExports) {
+        this.candidatureExports = candidatureExports;
     }
 }

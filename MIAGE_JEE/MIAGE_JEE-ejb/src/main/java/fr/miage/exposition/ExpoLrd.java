@@ -9,6 +9,7 @@ import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Competence;
+import fr.miage.entities.DemandeCompetence;
 import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
 import javax.ejb.EJB;
@@ -22,10 +23,12 @@ import java.util.*;
 @Stateless
 public class ExpoLrd implements ExpoLrdRemote {
 
+    @EJB
+    private GestionDemandeCompetenceLocal gestionDemandeCompetence;
 
     @Override
     public HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes() {
-        return null;
+        return gestionDemandeCompetence.listerCompetencesDemandeesEquipes();
     }
 
     @Override

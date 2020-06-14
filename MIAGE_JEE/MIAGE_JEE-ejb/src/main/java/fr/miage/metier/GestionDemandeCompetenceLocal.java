@@ -5,6 +5,7 @@
  */
 package fr.miage.metier;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.DemandeCompetenceExport;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CompetenceInexistanteException;
@@ -30,4 +31,6 @@ public interface GestionDemandeCompetenceLocal {
     HashSet<DemandeCompetence> listerCompetenceACombler();
 
     DemandeCompetence comblerCompetence(Long idDemandeCompetence) throws DemandeCompetenceInexistanteException;
+
+    HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
 }

@@ -75,4 +75,12 @@ public class FichePoste implements Serializable {
     public void setArchivee(boolean archivee) {
         this.archivee = archivee;
     }
+
+    public List<Candidature> getCandidatures() {
+        return candidatures;
+    }
+
+    public void setCandidatures(List<Candidature> candidatures) {
+        this.candidatures = candidatures;
+    }
 }
