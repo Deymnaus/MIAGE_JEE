@@ -64,7 +64,7 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
         Equipe eq = equipeFacade.find(numEquipe);
 
         if(eq == null)
-            throw new EquipeInexistanteException("L\'équipe n\'existe pas dans la base de données");
+            throw new EquipeInexistanteException("L'équipe n'existe pas dans la base de données");
 
         for(Long id : listeIdCompetence){
             c = competenceFacade.find(id);
@@ -76,7 +76,7 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
             listeCompetences.add(c);
         }
 
-        return demandeCompetenceFacade.creerDemandeCompetence(new ArrayList<Competence>(listeCompetences), eq, Etat.EnAttente);
+        return demandeCompetenceFacade.creerDemandeCompetence(new ArrayList<>(listeCompetences), eq, Etat.EnAttente);
     }
 
     @Override
@@ -120,17 +120,16 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     }
 
     @Override
-    public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) {
+    public void proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) throws DemandeCompetenceInexistanteException {
         DemandeCompetence demandeCompetence = demandeCompetenceFacade.find(idDemandeCompetence);
 
         if(demandeCompetence == null){
-            return 0;
+            throw  new DemandeCompetenceInexistanteException("La demande de compétence n'a pas été trouvé dans la base de données");
         }
 
         demandeCompetence.setEtat(Etat.Servie);
         demandeCompetenceFacade.edit(demandeCompetence);
         fichePosteFacade.creerFichePoste(demandeCompetence, presentationEntreprise, presentationPoste);
-        return 1;
     }
 
     // Add business logic below. (Right-click in editor and choose

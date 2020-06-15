@@ -51,11 +51,11 @@ public class GestionCandidat implements GestionCandidatLocal {
     public Candidature proposerCandidature(Long numCandidat, Long numFichePoste) throws CandidatInexistantException, FichePosteInexistanteException {
         Candidat c = candidatFacade.find(numCandidat);
         if(c == null)
-            throw new CandidatInexistantException("Le candidat n\'existe pas dans la base de données");
+            throw new CandidatInexistantException("Le candidat n'existe pas dans la base de données");
 
         FichePoste fp = fichePosteFacade.find(numFichePoste);
         if(fp == null)
-            throw new FichePosteInexistanteException("Le poste à candidater n\'existe pas");
+            throw new FichePosteInexistanteException("Le poste à candidater n'existe pas");
 
         return candidatureFacade.creerCandidature(c, fp, Statut.EnAttente);
     }
@@ -77,7 +77,7 @@ public class GestionCandidat implements GestionCandidatLocal {
         FichePoste fp = fichePosteFacade.find(idFichePoste);
 
         if(fp == null)
-            throw new FichePosteInexistanteException("L\'offre demandée n\'existe pas");
+            throw new FichePosteInexistanteException("L'offre demandée n'existe pas");
 
         return fp;
     }
@@ -92,10 +92,20 @@ public class GestionCandidat implements GestionCandidatLocal {
         Candidature cd = candidatureFacade.find(idCandidature);
 
         if(cd == null)
-            throw new CandidatureInexistantException("La candidature n\'existe pas dans la base de données");
+            throw new CandidatureInexistantException("La candidature n'existe pas dans la base de données");
 
         cd.setStatut(statut);
         return cd;
+    }
+
+    @Override
+    public void changerStatutCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException {
+        Candidature candidature = candidatureFacade.find(idCandidature);
+        if(candidature == null)
+            throw new CandidatureInexistantException("La candidature n'existe pas dans la base de données");
+
+        candidature.setStatut(statut);
+        candidatureFacade.edit(candidature);
     }
 
     // Add business logic below. (Right-click in editor and choose

@@ -7,7 +7,11 @@ package fr.miage.exposition;
 
 import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
+import fr.miage.entities.Candidature;
+import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
+import fr.miage.utils.Traducteur;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.*;
@@ -22,6 +26,9 @@ public class ExpoLrd implements ExpoLrdRemote {
     @EJB
     private GestionDemandeCompetenceLocal gestionDemandeCompetence;
 
+    @EJB
+    private GestionCandidatLocal gestionCandidat;
+
     @Override
     public HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes() {
         return gestionDemandeCompetence.listerCompetencesDemandeesEquipes();
@@ -34,16 +41,30 @@ public class ExpoLrd implements ExpoLrdRemote {
 
     @Override
     public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) {
-        return gestionDemandeCompetence.proposerFichePoste(idDemandeCompetence, presentationPoste, presentationEntreprise);
+        int result = 0;
+        try {
+            gestionDemandeCompetence.proposerFichePoste(idDemandeCompetence, presentationPoste, presentationEntreprise);
+            result = 1;
+        } catch (DemandeCompetenceInexistanteException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     public HashSet<CandidatureExport> listerCandidatures() {
-        return null;
+        return new HashSet<>(Traducteur.listeCandidatureToCandidatureExport(gestionCandidat.listerCandidatures()));
     }
 
     @Override
-    public void changerStatutCandidature(Long idCandidature, Statut statut) {
-
+    public int changerStatutCandidature(Long idCandidature, Statut statut) {
+        int result = 0;
+        try{
+            gestionCandidat.changerStatutCandidature(idCandidature, statut);
+            result = 1;
+        } catch (CandidatureInexistantException e){
+            e.printStackTrace();
+        }
+        return result;
     }
 }

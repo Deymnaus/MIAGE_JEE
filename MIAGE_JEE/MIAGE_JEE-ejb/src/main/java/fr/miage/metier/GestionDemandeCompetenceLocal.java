@@ -21,8 +21,8 @@ import java.util.HashSet;
 @Local
 public interface GestionDemandeCompetenceLocal {
     
-    public void creerCompetence(String nom, String description);
-    public Competence getCompetence(long idCompetence);
+    void creerCompetence(String nom, String description);
+    Competence getCompetence(long idCompetence);
 
     DemandeCompetence demanderCompetence(Long numEquipe, ArrayList<Long> listeIdCompetence) throws EquipeInexistanteException, CompetenceInexistanteException;
 
@@ -34,5 +34,5 @@ public interface GestionDemandeCompetenceLocal {
 
     HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
 
-    int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise);
+    void proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) throws DemandeCompetenceInexistanteException;
 }

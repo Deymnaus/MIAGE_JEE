@@ -37,4 +37,6 @@ public interface GestionCandidatLocal {
     List<Candidature> listerCandidatures();
 
     Candidature sePrononcerSurCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException;
+
+    void changerStatutCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException;
 }
