@@ -102,13 +102,14 @@ public class GestionCandidat implements GestionCandidatLocal {
     }
 
     @Override
-    public void changerStatutCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException {
+    public int changerStatutCandidature(Long idCandidature, Statut statut) {
         Candidature candidature = candidatureFacade.find(idCandidature);
         if(candidature == null)
-            throw new CandidatureInexistantException("La candidature n'existe pas dans la base de données");
+            return 0;
 
         candidature.setStatut(statut);
         candidatureFacade.edit(candidature);
+        return 1;
     }
 
     @Override
@@ -124,18 +125,19 @@ public class GestionCandidat implements GestionCandidatLocal {
     }
 
     @Override
-    public void concretiserEmbauche(Long idCandidature, Long idEquipe) throws CandidatureInexistantException, EquipeInexistanteException {
+    public int concretiserEmbauche(Long idCandidature, Long idEquipe){
         Candidature candidature = candidatureFacade.find(idCandidature);
         if (candidature == null)
-            throw new CandidatureInexistantException("La candidature n'existe pas dans la base de données");
+            return 0;
         Equipe equipe = equipeFacade.find(idEquipe);
         if(equipe == null)
-            throw new EquipeInexistanteException("L'équipe n'existe pas dans la base de données");
+            return 2;
 
         candidature.getFichePoste().setArchivee(true);
+        candidature.setStatut(Statut.Concretise);
         Candidat candidat = candidature.getCandidat();
-        candidatFacade.remove(candidat);
         collaborateurFacade.creerCollaborateurFromCandidat(candidat, false, false, equipe);
+        return 1;
     }
 
     // Add business logic below. (Right-click in editor and choose

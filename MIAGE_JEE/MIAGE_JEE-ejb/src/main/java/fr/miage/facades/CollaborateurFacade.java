@@ -43,7 +43,7 @@ public class CollaborateurFacade extends AbstractFacade<Collaborateur> implement
         clb.setId(candidat.getId());
         clb.setNom(candidat.getNom());
         clb.setPrenom(candidat.getPrenom());
-        clb.setCompetences(new ArrayList<Competence>());
+        clb.setCompetences(candidat.getCompetences());
         clb.setCodir(codir);
         clb.setManager(manager);
         clb.setEquipe(equipe);

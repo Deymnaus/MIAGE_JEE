@@ -1,6 +1,7 @@
 package fr.miage.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -76,6 +77,7 @@ public class FichePoste implements Serializable {
         this.archivee = archivee;
     }
 
+    @XmlTransient
     public List<Candidature> getCandidatures() {
         return candidatures;
     }

@@ -34,5 +34,5 @@ public interface GestionDemandeCompetenceLocal {
 
     HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
 
-    void proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) throws DemandeCompetenceInexistanteException;
+    int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise);
 }

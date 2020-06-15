@@ -404,21 +404,21 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
             case Embauche:
                 result = candidatureController.concretiserEmbauche(Long.parseLong(idTextField.getText()), Long.parseLong(idTextField.getText()));
+                this.concretiserEmbaucheButtonActionPerformed(evt);
                 if(result == 0)
                     infoText.setText("<html>ERREUR : La candidature n'a pas été trouvée dans la base de données</html>");
                 else if (result == 2 )
                     infoText.setText("<html>ERREUR : L'équipe n'a pas été trouvée dans la base de données</html>");
                 else
                     infoText.setText("<html>La candidature a bien été concrétisée</html>");
-                this.concretiserEmbaucheButtonActionPerformed(evt);
                 break;
             case Candidatures:
                 result = candidatureController.changerStatutCandidature(Long.parseLong(idTextField.getText()), (Statut) statutComboBox.getSelectedItem());
+                this.gererCandidaturesbuttonActionPerformed(evt);
                 if(result == 0)
                     infoText.setText("<html>ERREUR : La candidature n'a pas été trouvée dans la base de données</html>");
                 else
                     infoText.setText("<html>La candidature a bien été modifiée</html>");
-                this.gererCandidaturesbuttonActionPerformed(evt);
                 break;
             case DemandeCompetenceEquipe:
                 result = competencesDemandesController.proposerFichePoste(Long.parseLong(idTextField.getText()), presentationPosteTextField.getText(), presentationEntrepriseTextField.getText());

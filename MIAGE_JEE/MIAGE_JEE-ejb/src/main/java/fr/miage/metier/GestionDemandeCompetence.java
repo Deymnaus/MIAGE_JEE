@@ -120,16 +120,17 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     }
 
     @Override
-    public void proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) throws DemandeCompetenceInexistanteException {
+    public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise){
         DemandeCompetence demandeCompetence = demandeCompetenceFacade.find(idDemandeCompetence);
 
         if(demandeCompetence == null){
-            throw  new DemandeCompetenceInexistanteException("La demande de compétence n'a pas été trouvé dans la base de données");
+            return 0;
         }
 
         demandeCompetence.setEtat(Etat.Servie);
         demandeCompetenceFacade.edit(demandeCompetence);
         fichePosteFacade.creerFichePoste(demandeCompetence, presentationEntreprise, presentationPoste);
+        return 1;
     }
 
     // Add business logic below. (Right-click in editor and choose

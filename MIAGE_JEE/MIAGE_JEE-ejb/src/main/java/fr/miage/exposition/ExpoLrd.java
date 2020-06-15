@@ -40,14 +40,7 @@ public class ExpoLrd implements ExpoLrdRemote {
 
     @Override
     public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) {
-        int result = 0;
-        try {
-            gestionDemandeCompetence.proposerFichePoste(idDemandeCompetence, presentationPoste, presentationEntreprise);
-            result = 1;
-        } catch (DemandeCompetenceInexistanteException e) {
-            e.printStackTrace();
-        }
-        return result;
+        return gestionDemandeCompetence.proposerFichePoste(idDemandeCompetence, presentationPoste, presentationEntreprise);
     }
 
     @Override
@@ -57,14 +50,7 @@ public class ExpoLrd implements ExpoLrdRemote {
 
     @Override
     public int changerStatutCandidature(Long idCandidature, Statut statut) {
-        int result = 0;
-        try{
-            gestionCandidat.changerStatutCandidature(idCandidature, statut);
-            result = 1;
-        } catch (CandidatureInexistantException e){
-            e.printStackTrace();
-        }
-        return result;
+        return gestionCandidat.changerStatutCandidature(idCandidature, statut);
     }
 
     @Override
@@ -74,17 +60,6 @@ public class ExpoLrd implements ExpoLrdRemote {
 
     @Override
     public int concretiserEmbauche(Long idCandidature, Long idEquipe) {
-        int result;
-        try {
-            gestionCandidat.concretiserEmbauche(idCandidature, idEquipe);
-            result = 1;
-        } catch (CandidatureInexistantException e){
-            result = 0;
-            e.printStackTrace();
-        } catch (EquipeInexistanteException e) {
-            result = 2;
-            e.printStackTrace();
-        }
-        return result;
+        return gestionCandidat.concretiserEmbauche(idCandidature, idEquipe);
     }
 }
