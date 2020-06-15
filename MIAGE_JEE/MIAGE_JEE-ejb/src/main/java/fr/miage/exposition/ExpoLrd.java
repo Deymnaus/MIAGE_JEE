@@ -33,8 +33,8 @@ public class ExpoLrd implements ExpoLrdRemote {
     }
 
     @Override
-    public void proposerFichePoste(Long idDemandeCompetence) {
-
+    public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) {
+        return gestionDemandeCompetence.proposerFichePoste(idDemandeCompetence, presentationPoste, presentationEntreprise);
     }
 
     @Override

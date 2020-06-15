@@ -22,7 +22,7 @@ public interface ExpoLrdRemote {
 
      HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
 
-     void proposerFichePoste(Long idDemandeCompetence);
+     int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise);
 
      HashSet<CandidatureExport> listerCandidatures();
 

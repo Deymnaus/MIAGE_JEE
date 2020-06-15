@@ -17,5 +17,8 @@ public class CompetencesDemandesController{
     public HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes(){
         return expo.listerCompetencesDemandeesEquipes();
     }
-   
+
+    public int proposerFichePoste(Long id, String presentationPoste, String presentationEntreprise) {
+        return expo.proposerFichePoste(id, presentationPoste, presentationEntreprise);
+    }
 }

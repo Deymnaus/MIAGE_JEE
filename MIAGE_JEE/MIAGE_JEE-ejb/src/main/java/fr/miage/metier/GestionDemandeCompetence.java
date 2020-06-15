@@ -9,6 +9,7 @@ import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
+import fr.miage.entities.FichePoste;
 import fr.miage.facades.*;
 import fr.miage.utils.Traducteur;
 
@@ -36,6 +37,9 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
 
     @EJB
     private CollaborateurFacadeLocal collaborateurFacade;
+
+    @EJB
+    private FichePosteFacadeLocal fichePosteFacade;
 
     
     @Override
@@ -113,6 +117,20 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
         }
 
         return listeCompetencesCollaborateurs;
+    }
+
+    @Override
+    public int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise) {
+        DemandeCompetence demandeCompetence = demandeCompetenceFacade.find(idDemandeCompetence);
+
+        if(demandeCompetence == null){
+            return 0;
+        }
+
+        demandeCompetence.setEtat(Etat.Servie);
+        demandeCompetenceFacade.edit(demandeCompetence);
+        fichePosteFacade.creerFichePoste(demandeCompetence, presentationEntreprise, presentationPoste);
+        return 1;
     }
 
     // Add business logic below. (Right-click in editor and choose

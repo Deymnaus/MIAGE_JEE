@@ -33,4 +33,6 @@ public interface GestionDemandeCompetenceLocal {
     HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
 
     HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
+
+    int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise);
 }
