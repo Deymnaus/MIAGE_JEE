@@ -469,8 +469,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void listeCompetencesCollaborateurButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.action = UseCase.CompetenceCollaborateur;
-
-        HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listeCompetencesCollaborateurs = this.competenceController.listerCompetencesCollaborateurs();
+        HashSet<CollaborateurExport> collaborateurExports = this.competenceController.listerCompetencesCollaborateurs();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Id");
@@ -479,10 +478,10 @@ public class MainFrame extends javax.swing.JFrame {
         model.addColumn("Competences");
         this.jTable1.setModel(model);
 
-        for(CollaborateurExport cle : listeCompetencesCollaborateurs.keySet()){
+        for(CollaborateurExport cle : collaborateurExports){
             DefaultTableModel tableModel = (DefaultTableModel) this.jTable1.getModel();
             StringBuilder competences = new StringBuilder();
-            for(CompetenceExport ce : listeCompetencesCollaborateurs.get(cle)){
+            for(CompetenceExport ce : cle.getCompetences()){
                 competences.append(ce.getNom()).append(" ; ");
             }
             tableModel.addRow(new Object[]{cle.getId(), cle.getNom(), cle.getPrenom(), competences.toString()});

@@ -34,7 +34,7 @@ public class ExpoLrd implements ExpoLrdRemote {
     }
 
     @Override
-    public HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs() {
+    public HashSet<CollaborateurExport> listerCompetencesCollaborateurs() {
         return gestionDemandeCompetence.listerCompetencesCollaborateurs();
     }
 

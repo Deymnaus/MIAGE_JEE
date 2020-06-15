@@ -9,14 +9,12 @@ import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Competence;
 import fr.miage.entities.DemandeCompetence;
 import fr.miage.entities.Equipe;
-import fr.miage.entities.FichePoste;
 import fr.miage.facades.*;
 import fr.miage.utils.Traducteur;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -106,17 +104,8 @@ public class GestionDemandeCompetence implements GestionDemandeCompetenceLocal {
     }
 
     @Override
-    public HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs() {
-        HashSet<CollaborateurExport> collaborateurExports = new HashSet<>(Traducteur.listeCollaborateurToListeCollaborateurExport(collaborateurFacade.findAll()));
-        HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listeCompetencesCollaborateurs = new HashMap<>();
-
-        for(CollaborateurExport ce : collaborateurExports){
-            if(listeCompetencesCollaborateurs.get(ce) == null){
-                listeCompetencesCollaborateurs.put(ce, ce.getCompetences());
-            }
-        }
-
-        return listeCompetencesCollaborateurs;
+    public HashSet<CollaborateurExport> listerCompetencesCollaborateurs() {
+        return new HashSet<>(Traducteur.listeCollaborateurToListeCollaborateurExport(collaborateurFacade.findAll()));
     }
 
     @Override

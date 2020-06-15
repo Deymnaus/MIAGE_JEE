@@ -11,7 +11,6 @@ import fr.miage.entities.DemandeCompetence;
 
 import javax.ejb.Local;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -32,7 +31,7 @@ public interface GestionDemandeCompetenceLocal {
 
     HashSet<DemandeCompetenceExport> listerCompetencesDemandeesEquipes();
 
-    HashMap<CollaborateurExport, ArrayList<CompetenceExport>> listerCompetencesCollaborateurs();
+    HashSet<CollaborateurExport> listerCompetencesCollaborateurs();
 
     int proposerFichePoste(Long idDemandeCompetence, String presentationPoste, String presentationEntreprise);
 }
