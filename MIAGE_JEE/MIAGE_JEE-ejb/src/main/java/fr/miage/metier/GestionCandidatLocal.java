@@ -5,13 +5,10 @@
  */
 package fr.miage.metier;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
 import fr.miage.entities.FichePoste;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatInexistantException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatureInexistantException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.FichePosteInexistanteException;
 
 import javax.ejb.Local;
 import java.util.HashSet;
@@ -39,4 +36,8 @@ public interface GestionCandidatLocal {
     Candidature sePrononcerSurCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException;
 
     void changerStatutCandidature(Long idCandidature, Statut statut) throws CandidatureInexistantException;
+
+    List<Candidature> listerCandidaturesFeuVert();
+
+    void concretiserEmbauche(Long idCandidature, Long idEquipe) throws CandidatureInexistantException, EquipeInexistanteException;
 }

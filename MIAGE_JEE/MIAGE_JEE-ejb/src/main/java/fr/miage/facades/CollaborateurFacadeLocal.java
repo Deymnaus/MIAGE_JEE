@@ -1,5 +1,6 @@
 package fr.miage.facades;
 
+import fr.miage.entities.Candidat;
 import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
@@ -25,6 +26,8 @@ public interface CollaborateurFacadeLocal{
     int count();
 
     public void creerCollaborateur(String nom, String prenom, boolean codir, boolean manager, Equipe equipe);
+
+    void creerCollaborateurFromCandidat(Candidat candidat, boolean codir, boolean manager, Equipe equipe);
 
     ArrayList<Competence> listerCompetence(Collaborateur collaborateur);
 }

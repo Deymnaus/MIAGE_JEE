@@ -7,7 +7,6 @@ package fr.miage.exposition;
 
 import fr.andrea.christophe.m1.jee.miage_jee.shr.interfremote.ExpoLrdRemote;
 import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
-import fr.miage.entities.Candidature;
 import fr.miage.metier.GestionCandidatLocal;
 import fr.miage.metier.GestionDemandeCompetenceLocal;
 import fr.miage.utils.Traducteur;
@@ -63,6 +62,27 @@ public class ExpoLrd implements ExpoLrdRemote {
             gestionCandidat.changerStatutCandidature(idCandidature, statut);
             result = 1;
         } catch (CandidatureInexistantException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public HashSet<CandidatureExport> listerCandidaturesFeuVert() {
+        return new HashSet<>(Traducteur.listeCandidatureToCandidatureExport(gestionCandidat.listerCandidaturesFeuVert()));
+    }
+
+    @Override
+    public int concretiserEmbauche(Long idCandidature, Long idEquipe) {
+        int result;
+        try {
+            gestionCandidat.concretiserEmbauche(idCandidature, idEquipe);
+            result = 1;
+        } catch (CandidatureInexistantException e){
+            result = 0;
+            e.printStackTrace();
+        } catch (EquipeInexistanteException e) {
+            result = 2;
             e.printStackTrace();
         }
         return result;

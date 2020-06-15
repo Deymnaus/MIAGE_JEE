@@ -1,5 +1,6 @@
 package fr.miage.facades;
 
+import fr.miage.entities.Candidat;
 import fr.miage.entities.Collaborateur;
 import fr.miage.entities.Competence;
 import fr.miage.entities.Equipe;
@@ -29,6 +30,19 @@ public class CollaborateurFacade extends AbstractFacade<Collaborateur> implement
         Collaborateur clb = new Collaborateur();
         clb.setNom(nom);
         clb.setPrenom(prenom);
+        clb.setCompetences(new ArrayList<Competence>());
+        clb.setCodir(codir);
+        clb.setManager(manager);
+        clb.setEquipe(equipe);
+        this.create(clb);
+    }
+
+    @Override
+    public void creerCollaborateurFromCandidat(Candidat candidat, boolean codir, boolean manager, Equipe equipe){
+        Collaborateur clb = new Collaborateur();
+        clb.setId(candidat.getId());
+        clb.setNom(candidat.getNom());
+        clb.setPrenom(candidat.getPrenom());
         clb.setCompetences(new ArrayList<Competence>());
         clb.setCodir(codir);
         clb.setManager(manager);

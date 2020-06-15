@@ -5,19 +5,16 @@
  */
 package fr.miage.metier;
 
+import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.*;
 import fr.miage.entities.Candidat;
 import fr.miage.entities.Candidature;
+import fr.miage.entities.Equipe;
 import fr.miage.entities.FichePoste;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.Statut;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatInexistantException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.CandidatureInexistantException;
-import fr.andrea.christophe.m1.jee.miage_jee.shr.utilities.FichePosteInexistanteException;
-import fr.miage.facades.CandidatFacadeLocal;
-import fr.miage.facades.CandidatureFacadeLocal;
-import fr.miage.facades.FichePosteFacadeLocal;
+import fr.miage.facades.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -32,10 +29,16 @@ public class GestionCandidat implements GestionCandidatLocal {
     private CandidatFacadeLocal candidatFacade;
 
     @EJB
+    private CollaborateurFacadeLocal collaborateurFacade;
+
+    @EJB
     private CandidatureFacadeLocal candidatureFacade;
 
     @EJB
     private FichePosteFacadeLocal fichePosteFacade;
+
+    @EJB
+    private EquipeFacadeLocal equipeFacade;
 
     @Override
     public void creerCandidat(String nom, String prenom) {
@@ -106,6 +109,33 @@ public class GestionCandidat implements GestionCandidatLocal {
 
         candidature.setStatut(statut);
         candidatureFacade.edit(candidature);
+    }
+
+    @Override
+    public List<Candidature> listerCandidaturesFeuVert() {
+        ArrayList<Candidature> candidatures = new ArrayList<>();
+
+        for(Candidature candidature : candidatureFacade.findAll()) {
+            if(candidature.getStatut() == Statut.Accepte)
+                candidatures.add(candidature);
+        }
+
+        return candidatures;
+    }
+
+    @Override
+    public void concretiserEmbauche(Long idCandidature, Long idEquipe) throws CandidatureInexistantException, EquipeInexistanteException {
+        Candidature candidature = candidatureFacade.find(idCandidature);
+        if (candidature == null)
+            throw new CandidatureInexistantException("La candidature n'existe pas dans la base de données");
+        Equipe equipe = equipeFacade.find(idEquipe);
+        if(equipe == null)
+            throw new EquipeInexistanteException("L'équipe n'existe pas dans la base de données");
+
+        candidature.getFichePoste().setArchivee(true);
+        Candidat candidat = candidature.getCandidat();
+        candidatFacade.remove(candidat);
+        collaborateurFacade.creerCollaborateurFromCandidat(candidat, false, false, equipe);
     }
 
     // Add business logic below. (Right-click in editor and choose

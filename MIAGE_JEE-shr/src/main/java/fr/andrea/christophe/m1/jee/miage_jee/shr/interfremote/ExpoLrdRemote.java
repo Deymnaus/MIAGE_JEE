@@ -27,4 +27,8 @@ public interface ExpoLrdRemote {
      HashSet<CandidatureExport> listerCandidatures();
 
      int changerStatutCandidature(Long idCandidature, Statut statut);
+
+     HashSet<CandidatureExport> listerCandidaturesFeuVert();
+
+     int concretiserEmbauche(Long idCandidature, Long idEquipe);
 }

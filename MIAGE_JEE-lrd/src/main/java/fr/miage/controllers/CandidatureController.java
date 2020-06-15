@@ -22,4 +22,12 @@ public class CandidatureController {
     public int changerStatutCandidature(Long idCandidature, Statut statut) {
         return expoLrd.changerStatutCandidature(idCandidature, statut);
     }
+
+    public HashSet<CandidatureExport> listerCandidaturesFeuVert() {
+        return expoLrd.listerCandidaturesFeuVert();
+    }
+
+    public int concretiserEmbauche(Long idCandidature, Long idEquipe) {
+        return expoLrd.concretiserEmbauche(idCandidature, idEquipe);
+    }
 }
